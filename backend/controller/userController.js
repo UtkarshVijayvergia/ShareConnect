@@ -9,9 +9,18 @@ const User = require('../models/userModel')
 // @access  Public  
 const registerUser = asyncHandler(async (req,res) => {
     const { name, email, password } = req.body;
-    if(!name || !email || !password){
+    // check for field validations
+    if(!name){
         res.status(400)
-        throw new Error('Please add all fields')
+        throw new Error('Please Add Your Name')
+    }
+    if(!email){
+        res.status(400)
+        throw new Error('Please Add Your Email')
+    }
+    if(!password){
+        res.status(400)
+        throw new Error('Please Add A Password')
     }
     // check if user exist
     const userExist = await User.findOne({email})
@@ -70,14 +79,7 @@ const loginUser = asyncHandler(async (req,res) => {
 // @route   GET /api/users/me
 // @access  Private  
 const getMe = asyncHandler(async (req,res) => {
-    // const { _id, name, email } = await User.findById(req.user.id)
-    // No need of above as we have already done this in authMiddleware
     res.status(200).json(req.user)
-    // ({
-    //     id: _id,
-    //     name,
-    //     email,
-    // })
 })
 
 
