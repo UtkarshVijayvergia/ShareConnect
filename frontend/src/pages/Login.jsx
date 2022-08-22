@@ -60,11 +60,14 @@ const Login = () => {
 
     return (
         <div>
-            <section className="heading">
+            {/* <section className="heading">
                 <h1><FaSignInAlt/>Login</h1>
                 <p>If you haven't created an account than please Register</p>
-            </section>
-            <section className="form">
+            </section> */}
+            <div className="container"><h3><u>LOGIN TO PAGEIT</u></h3></div>
+
+            {/* <section className="form"> */}
+            <center>
                 <form onSubmit={onSubmit}>
                     <div className="form-group">
                         <input type="email" className="form-control" id='email' name='email' value={email} placeholder='Enter Your Email' onChange={onChange}/>
@@ -76,7 +79,8 @@ const Login = () => {
                         <button type="submit" className="btn btn-block">Submit  </button>
                     </div>
                 </form>
-            </section>
+            </center>
+            {/* </section> */}
         </div>
     )
 }

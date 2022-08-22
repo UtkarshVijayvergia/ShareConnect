@@ -2,10 +2,14 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+// import authReducer from '../features/auth/authSlice';
 
 const Dashboard = () => {
     const navigate = useNavigate();
     const { user } = useSelector((state) => state.auth)
+
+    // const userData = useSelector((state) => )
+    console.log(user);
 
     useEffect(() => {
         if(!user){
@@ -13,6 +17,7 @@ const Dashboard = () => {
         }
     }, [user, navigate])
     
+    // const userData = authReducer.user;
 
     return (
         <div>
@@ -22,7 +27,11 @@ const Dashboard = () => {
                 <br />
                 {user.name}
                 <br />
-                {user.email}</>
+                {user.email}
+                <br /><br />
+                <p>qwerty</p>
+                {/* { user } */}
+                </>
             )
             :
 
