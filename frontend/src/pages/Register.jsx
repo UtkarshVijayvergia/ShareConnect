@@ -6,6 +6,8 @@ import { toast } from 'react-toastify'
 import { FaUser } from 'react-icons/fa'
 import { register, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
+import { Link } from 'react-router-dom'
+
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -28,7 +30,7 @@ const Register = () => {
       }
 
       if(isSuccess || user){
-        navigate('/')
+        navigate('/home')
       }
 
       dispatch(reset())
@@ -86,29 +88,34 @@ const Register = () => {
 
     return (
         <div>
+            <br /><br />
             <section className="heading">
                 <h1><FaUser/>Register</h1>
-                <p>Please Create an account</p>
+                <br />
+                <p className='register-heading-buttom-space-reducer'><u>Please Create an account</u></p>
             </section>
             <section className="form">
-                <form onSubmit={onSubmit}>
-                    <div className="form-group">
-                        <input type="text" className="form-control" id='name' name='name' value={name} placeholder='Enter Your Name' onChange={onChange}/>
-                    </div>
-                    <div className="form-group">
-                        <input type="email" className="form-control" id='email' name='email' value={email} placeholder='Enter Your Email' onChange={onChange}/>
-                    </div>
-                    <div className="form-group">
-                        <input type="password" className="form-control" id='password' name='password' value={password} placeholder='Enter Your Password' onChange={onChange}/>
-                    </div>
-                    <div className="form-group">
-                        <input type="password" className="form-control" id='confirmPassword' name='confirmPassword' value={confirmPassword} placeholder='Confirm Password' onChange={onChange}/>
-                    </div>
-                    <div className="form-group">
-                        <button type="submit" className="btn btn-block">Submit  </button>
-                    </div>
-                </form>
+                <center>
+                    <form onSubmit={onSubmit}>
+                        <div className="form-group login-textarea-control">
+                            <input type="text" className="form-control" id='name' name='name' value={name} placeholder='Enter Your Name' onChange={onChange}/>
+                        </div>
+                        <div className="form-group login-textarea-control">
+                            <input type="email" className="form-control" id='email' name='email' value={email} placeholder='Enter Your Email' onChange={onChange}/>
+                        </div>
+                        <div className="form-group login-textarea-control">
+                            <input type="password" className="form-control" id='password' name='password' value={password} placeholder='Enter Your Password' onChange={onChange}/>
+                        </div>
+                        <div className="form-group login-textarea-control">
+                            <input type="password" className="form-control" id='confirmPassword' name='confirmPassword' value={confirmPassword} placeholder='Confirm Password' onChange={onChange}/>
+                        </div>
+                        <div className="form-group login-textarea-control login-button-padding-control">
+                            <button type="submit" className="btn btn-block">Submit  </button>
+                        </div>
+                    </form>
+                </center>
             </section>
+            <u><Link className='register-link-hover' to="/login">Already A Registered User, Login</Link></u>
         </div>
     )
 }

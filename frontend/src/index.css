@@ -27,6 +27,30 @@ body {
   height: 100vh;
 }
 
+.navbar-margin{
+  margin: -4px;
+}
+
+.register-heading-buttom-space-reducer{
+  margin:-50px
+}
+
+.register-link-hover {
+  /* color: rgb(13, 0, 255); */
+  color: rgb(72, 72, 72);
+}
+.register-link-hover:hover {
+  color: rgb(46, 112, 255);
+}
+
+.login-textarea-control{
+  width: 450px;
+}
+
+.login-button-padding-control{
+  padding-bottom: 3px;
+}
+
 /* custom CSS start */
 
 .right-padder{
