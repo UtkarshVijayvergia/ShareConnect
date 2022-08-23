@@ -5,9 +5,9 @@ import 'react-toastify/dist/ReactToastify.css'
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Register from './pages/Register';
-// import Header from './components/Header';
 import Navbar from './components/Navbar';
 import About from './pages/About';
+import LandingPage from './pages/LandingPage';
 
 function App() {
     return (
@@ -16,7 +16,8 @@ function App() {
                 <Navbar/>
                 <div className="container-new">
                     <Routes>
-                        <Route path='/' element={<Dashboard/>} />
+                        <Route path='/' element={<LandingPage/>}/>
+                        <Route path='/home' element={<Dashboard/>} />
                         <Route path='/login' element={<Login/>} />
                         <Route path='/register' element={<Register/>} />
                         <Route path='/about' element={<About/>} />
