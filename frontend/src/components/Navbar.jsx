@@ -18,10 +18,27 @@ const Navbar = () => {
         <>
             <nav className="navbar navbar-expand-lg bg-light">
                 <div className="container-fluid navbar-margin">
-                    <Link className="navbar-brand" to="/home"><img src={require(`../components/images/NavbarIcon.jpg`)} alt="ShareConnect"/></Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
+                    {
+                        user
+                        ?
+                        (
+                            <>
+                                <Link className="navbar-brand" to="/home"><img src={require(`../components/images/ShareConnectNavbarIcon.jpg`)} height="40px" alt="ShareConnect"/></Link>
+                                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span className="navbar-toggler-icon"></span>
+                                </button>
+                            </>
+                        )
+                        :
+                        (
+                            <>
+                                <Link className="navbar-brand" to="/"><img src={require(`../components/images/ShareConnectNavbarIcon.jpg`)} height="40px" alt="ShareConnect"/></Link>
+                                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span className="navbar-toggler-icon"></span>
+                                </button>
+                            </>
+                        )
+                    }
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">           
                         </ul>
