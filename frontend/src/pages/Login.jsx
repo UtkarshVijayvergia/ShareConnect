@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 import { login, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
 import { FaSignInAlt } from 'react-icons/fa'
+import LoginPopup from '../components/LoginPopup'
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -27,7 +28,7 @@ const Login = () => {
         }
   
         if(isSuccess || user){
-          navigate('/')
+          navigate('/home')
         }
   
         dispatch(reset())
@@ -59,24 +60,28 @@ const Login = () => {
 
 
     return (
-        <div>
+        <div className='container'>
             {/* <section className="heading">
                 <h1><FaSignInAlt/>Login</h1>
                 <p>If you haven't created an account than please Register</p>
             </section> */}
+
+            <LoginPopup />
+
+            <br /><br /><br />
             <div className="container"><h3><u>LOGIN TO PAGEIT</u></h3></div>
 
             {/* <section className="form"> */}
             <center>
                 <form onSubmit={onSubmit}>
-                    <div className="form-group">
+                    <div className="form-group login-textarea-control">
                         <input type="email" className="form-control" id='email' name='email' value={email} placeholder='Enter Your Email' onChange={onChange}/>
                     </div>
-                    <div className="form-group">
+                    <div className="form-group login-textarea-control">
                         <input type="password" className="form-control" id='password' name='password' value={password} placeholder='Enter Your Password' onChange={onChange}/>
-                    </div>
-                    <div className="form-group">
-                        <button type="submit" className="btn btn-block">Submit  </button>
+                    </div><br />
+                    <div className="form-group login-textarea-control login-button-padding-control">
+                        <button type="submit" className="btn btn-block">Submit</button>
                     </div>
                 </form>
             </center>
