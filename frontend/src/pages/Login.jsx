@@ -61,14 +61,9 @@ const Login = () => {
 
     return (
         <div className='container'>
-            {/* <section className="heading">
-                <h1><FaSignInAlt/>Login</h1>
-                <p>If you haven't created an account than please Register</p>
-            </section> */}
-
-            <LoginPopup />
-
-            <br /><br /><br />
+            <br />
+            <br />
+            <br />
             <div className="container"><h3><u>LOGIN TO PAGEIT</u></h3></div>
 
             {/* <section className="form"> */}
