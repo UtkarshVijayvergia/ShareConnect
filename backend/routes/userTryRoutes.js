@@ -10,7 +10,7 @@ router.use(cors());
 
 router.route('/').get(getUserTry).post(protect, setUserTry)
 router.route('/:id').get(getoneUserTry)
-router.route('/:id').put(protect, updateUserTry)
+router.route('/:id').post(updateUserTry)
 
 
 module.exports = router;

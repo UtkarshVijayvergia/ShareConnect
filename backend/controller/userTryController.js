@@ -62,6 +62,7 @@ const getoneUserTry = asyncHandler(async (req,res) => {
     //     throw new Error('User not authorized')
     // }
     // const updatedTest = await UserTry.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    // console.log(test);
     res.status(200).json(test)
 })
 
@@ -72,22 +73,25 @@ const getoneUserTry = asyncHandler(async (req,res) => {
 // @route   PUT /api/usertry/:id
 // @access  Private
 const updateUserTry = asyncHandler(async (req,res) => {
-    const test = await UserTry.findById(req.params.id)
-    if(!test){
-        res.status(400)
-        throw new Error('User Try not found')
-    }
-    // check if user logged in
-    if(!req.user){
-        res.status(401)
-        throw new Error('User not found')
-    }
-    // check if logged in user is accesing his user trys only
-    if(test.user.toString() != req.user.id){
-        res.status(401)
-        throw new Error('User not authorized')
-    }
-    const updatedTest = await UserTry.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    const test = await UserTry.find({user: req.params.id})
+    console.log(test);
+    // if(!test){
+        //     res.status(400)
+        //     throw new Error('User Try not found')
+        // }
+        // check if user logged in
+        // if(!req.user){
+            //     res.status(401)
+            //     throw new Error('User not found')
+            // }
+            // // check if logged in user is accesing his user trys only
+            // if(test.user.toString() != req.user.id){
+                //     res.status(401)
+                //     throw new Error('User not authorized')
+                // }
+                console.log(req.body);
+    const updatedTest = await UserTry.updateOne({user:req.params.id}, req.body, { new: true })
+    console.log(updatedTest);
     res.status(200).json(updatedTest)
 })
 
