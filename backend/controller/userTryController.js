@@ -4,9 +4,10 @@ const UserTry = require("../models/UserTryModel")
 
 // @desc     GET UserTry
 // @route    GET /api/usertry
-// @access   Private
+// @access   Public
 const getUserTry = asyncHandler(async (req,res) => {
-    const test = await UserTry.find({ user: req.user.id })
+    // const test = await UserTry.find({ user: req.user.id })
+    const test = await UserTry.find();
     res.status(200).json(test)
 })
 
@@ -40,6 +41,33 @@ const setUserTry = asyncHandler(async (req,res) => {
 
 
 
+
+// @desc    GETone userTry
+// @route   GET /api/usertry/:id
+// @access  Public
+const getoneUserTry = asyncHandler(async (req,res) => {
+    const test = await UserTry.find({ user: req.params.id })
+    if(!test){
+        res.status(400)
+        throw new Error('User Try not found')
+    }
+    // check if user logged in
+    // if(!req.user){
+    //     res.status(401)
+    //     throw new Error('User not found')
+    // }
+    // check if logged in user is accesing his user trys only
+    // if(test.user.toString() != req.user.id){
+    //     res.status(401)
+    //     throw new Error('User not authorized')
+    // }
+    // const updatedTest = await UserTry.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    res.status(200).json(test)
+})
+
+
+
+
 // @desc    Update userTry
 // @route   PUT /api/usertry/:id
 // @access  Private
@@ -68,5 +96,6 @@ const updateUserTry = asyncHandler(async (req,res) => {
 module.exports = {
     getUserTry,
     setUserTry,
+    getoneUserTry,
     updateUserTry,
 }
