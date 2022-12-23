@@ -6,23 +6,76 @@ import { useSelector } from 'react-redux'
 
 const About = () => {
 
+    const [usertrys, setUsertrys] = useState({
+        textField1: "",
+        textField2: "",
+        textField3: "",
+    })
+    
+    
     const navigate = useNavigate();
     const { user } = useSelector((state) => state.auth)
-    const [usertrys, setUsertrys] = useState([])
+    
     
     // Get user trys
     const getuserTrys = async () => {
         try{
-            const response = await fetch(`/api/usertry/${user._id}`)
+            const response = await fetch(`http://localhost:5000/api/usertry/${user._id}`)
+            // console.log(response);
             setUsertrys(await response.json());
         }
         catch(error){
             console.log(error);
         }
     } 
+    
+    const { textField1, textField2, textField3 } = usertrys[0]!=null ? usertrys[0] : {};
+    
+    const onChange = (e) => {
+        // setUsertrys((prevState) => ({
+        //     ...prevState[0],
+        //     [e.target.name]: e.target.value,
+        // }))
+        const name = e.target.name;
+        const value = e.target.value;
+        setUsertrys({ ...usertrys[0], [name]: value })
+        // console.log(usertrys)
+    }
+    
+    
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        
+        // console.log(usertrys);
+        // const { textField1, textField2, textField3 } = usertrys[0] ? usertrys[0] : usertrys;
+        console.log(textField1, textField2, textField3);
+        const response = await fetch(`http://localhost:5000/api/usertry/${user._id}`, {
+            method: "POST",
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({textField1, textField2, textField3})
+        })
+        console.log("User Registered Succesfully");
+    }
+    
+    console.log(usertrys);
+    // console.log(user);
+    // console.log(usertrys);
+        
+        
+    // get user login data
+    useEffect(() => {
+        // if user not authenticated then not allowed to visit this page (Protected route)
+        if (!user) {
+            navigate('/login')
+        }
+        // get user trys
+        getuserTrys()
+    }, [user, navigate])
 
-
-    // const userData = useSelector((state) => )
+    
+    
     let myStyle = {
         "paddingRight": "10px",
         "paddingLeft": "10px",
@@ -34,21 +87,7 @@ const About = () => {
         "paddingLeft": "20px",
         "textAlign": "Left",
     }
-    // console.log(user);
-    // console.log(usertrys);
-    
 
-    // get user login data
-    useEffect(() => {
-        // if user not authenticated then not allowed to visit this page (Protected route)
-        if (!user) {
-            navigate('/login')
-        }
-        // get user trys
-        else{
-            getuserTrys()
-        }
-    }, [user, navigate])
 
 
     return (
@@ -58,18 +97,35 @@ const About = () => {
                 <div className="col-10 col-md-3 mt-5" style={myStyle}>
                     <div className="card">
                         <h5>wertg</h5>
-                        {/* <a href="C:/Users/utkar/OneDrive/Desktop/ANIME/bakugou.jpg"></a> */}
                         <img src={require('../images/profileImages/bakugou.jpg')} alt="" />
                     </div>
                 </div>
             </div>
-                <br /><br />
+                <br />
                 <div style={textStyle}>
                     <p>Username: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.name}</p>
                     <p>E-mail: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.email}</p>
-                    <p>TextField1: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{usertrys[0] ? usertrys[0].textField1 : <span>NA</span>}</p>
-                    <p>TextField2: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{usertrys[0] ? usertrys[0].textField2 : <span>NA</span>}</p>
-                    <p>TextField3: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{usertrys[0] ? usertrys[0].textField3 : <span>NA</span>}</p>
+                    
+                    <form onSubmit={onSubmit}>
+                        <div className="form-group login-textarea-control">
+                            <input type="text" className="form-control" id='textField1' name='textField1' value={textField1} onChange={onChange}/>
+                        </div>
+                        <div className="form-group login-textarea-control">
+                            <input type="text" className="form-control" id='textField2' name='textField2' value={textField2} onChange={onChange}/>
+                        </div>
+                        <div className="form-group login-textarea-control">
+                            <input type="text" className="form-control" id='textField3' name='textField3' value={textField3} onChange={onChange}/>
+                        </div>
+
+                        <div className="form-group login-textarea-control login-button-padding-control">
+                            <button type="submit" className="btn btn-block">Submit  </button>
+                        </div>
+                        
+                    </form>
+
+                    {/* <p>TextField1: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{textField1}</p>
+                    <p>TextField2: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{textField2}</p>
+                    <p>TextField3: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{textField3}</p> */}
                 </div>
         </div>
     )
