@@ -46,7 +46,7 @@ const setUserTry = asyncHandler(async (req,res) => {
 // @route   GET /api/usertry/:id
 // @access  Public
 const getoneUserTry = asyncHandler(async (req,res) => {
-    const test = await UserTry.find({ user: req.params.id })
+    const test = await UserTry.find({ user: req.params.id }, 'textField1 textField2 textField3' ).exec();
     if(!test){
         res.status(400)
         throw new Error('User Try not found')
@@ -74,7 +74,6 @@ const getoneUserTry = asyncHandler(async (req,res) => {
 // @access  Private
 const updateUserTry = asyncHandler(async (req,res) => {
     const test = await UserTry.find({user: req.params.id})
-    console.log(test);
     // if(!test){
         //     res.status(400)
         //     throw new Error('User Try not found')
