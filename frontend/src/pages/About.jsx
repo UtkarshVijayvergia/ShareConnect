@@ -16,11 +16,17 @@ const About = () => {
     const navigate = useNavigate();
     const { user } = useSelector((state) => state.auth)
     
-    
+
     // Get user trys
     const getuserTrys = async () => {
         try{
-            const response = await fetch(`http://localhost:5000/api/usertry/${user._id}`)
+            const response = await fetch(`http://localhost:5000/api/usertry/${user._id}`,{
+                method: "GET",
+                headers:{
+                    Authorization: `Bearer ${user.token}`,
+                    'Content-Type': 'application/json',
+                },
+            })
             setUsertrys(await response.json());
         }
         catch(error){
@@ -37,13 +43,15 @@ const About = () => {
     }
     
     
+    // Post user trys
     const onSubmit = async (e) => {
         e.preventDefault();
         
         await fetch(`http://localhost:5000/api/usertry/${user._id}`, {
             method: "POST",
             headers:{
-                'Content-Type': 'application/json'
+                Authorization:  `Bearer ${user.token}`,
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({textField1, textField2, textField3})
         })
