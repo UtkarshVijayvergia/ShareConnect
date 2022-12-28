@@ -1,0 +1,16 @@
+.profilePicContainer {
+    align-items: center;
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    background-size: cover;
+}
+
+
+.profilePic {
+    display: inline-block;
+    width: 250px;
+    height: 350px;
+    border-radius: 50%;
+    object-fit: cover;
+}
