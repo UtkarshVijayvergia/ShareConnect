@@ -8,9 +8,9 @@ const cors = require('cors');
 router.use(cors());
 
 
-router.route('/').get(getUserTry).post(protect, setUserTry)
-router.route('/:id').get(getoneUserTry)
-router.route('/:id').post(updateUserTry)
+router.route('/').get(protect, getUserTry).post(protect, setUserTry)
+router.route('/:id').get(protect, getoneUserTry)
+router.route('/:id').post(protect, updateUserTry)
 
 
 module.exports = router;
