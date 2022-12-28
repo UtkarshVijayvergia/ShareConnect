@@ -1,8 +1,9 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import './profile.css'
 import ProfilePic from './profileComponents/ProfilePic'
-import { useSelector } from 'react-redux'
 import User from './profileComponents/User'
+import RecentPosts from './profileComponents/RecentPosts'
 
 const Profile = () => {
     const { user } = useSelector((state) => state.auth)
@@ -13,12 +14,21 @@ const Profile = () => {
             <div className='ProfilePic'>
                 <ProfilePic />
             </div>
+            <br />
             <div className='user'>
                 <User 
                     name = {user.name}
                     email = {user.email}
                 />
             </div>
+            <br /><br />
+            <hr />
+            <br />
+            <div className='recentPosts'>
+                <RecentPosts />
+            </div>
+            <hr />
+            <br />
         </div>
     )
 }
