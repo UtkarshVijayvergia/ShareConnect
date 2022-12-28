@@ -57,18 +57,18 @@ body {
   padding-right: 50px;
 }
 
-.btn-hider {
-  /* background-color: white; */
+/* .btn-hider {
+  background-color: white;
   color: white;
-}
+} */
 
 /* custom CSS end */
 
 
-a {
-  text-decoration: none;
-  color: #000;
-}
+/* a { */
+  /* text-decoration: none; */
+  /* color: #000; */
+/* } */
 
 p {
   line-height: 1.7;
@@ -191,7 +191,7 @@ h3 {
   margin: 0 0 5px 3px;
 }
 
-.btn {
+/* .btn {
   padding: 10px 20px;
   border: 1px solid #000;
   border-radius: 5px;
@@ -205,9 +205,9 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
-.btn svg {
+/* .btn svg {
   margin-right: 8px;
 }
 
@@ -223,7 +223,7 @@ h3 {
 
 .btn:hover {
   transform: scale(0.98);
-}
+} */
 
 .loadingSpinnerContainer {
   position: fixed;
