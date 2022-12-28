@@ -89,7 +89,6 @@ const updateUserTry = asyncHandler(async (req,res) => {
                 //     throw new Error('User not authorized')
                 // }
     const updatedTest = await UserTry.updateOne({user:req.params.id}, req.body, { new: true })
-    console.log(updatedTest);
     res.status(200).json(updatedTest)
 })
 
