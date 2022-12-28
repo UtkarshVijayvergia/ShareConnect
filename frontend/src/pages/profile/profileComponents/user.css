@@ -1,3 +1,29 @@
-.user{
-    line-height: 1.5;
+.name{
+    line-height: 0.5;
+    text-transform: capitalize;
+    font-size: 30px;
+}
+
+
+.email {
+    font-size: 20px;
+}
+
+
+.btn {
+    background-color: #54aeff;
+    /* color: yellow!important; */
+}
+
+.btn:hover {
+    background-color: #0969da; 
+}
+
+.navigate {
+    text-decoration: none;
+    color: white;
+}
+.navigate:hover {
+    text-decoration: none;
+    color: white;
 }
