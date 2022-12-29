@@ -1,0 +1,78 @@
+
+.accountDetails-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+p{
+    margin-bottom: auto;
+}
+
+
+.head1{
+    text-align: left;
+}
+
+
+.head-intro{
+    font-size: 24px;
+    font-weight: 100;
+}
+
+
+.head-p{
+    font-weight: 100;
+    font-size: 15px;
+}
+
+
+.namer{
+    display: flex;
+    padding-top: 20px;
+    padding-left: 150px;
+}
+
+
+.namer-name{
+    font-weight: bold;
+    padding-right: 20px;
+    padding-top: 7px;
+}
+
+
+.namer-input{
+    pointer-events: none;
+    width: 500px;
+    border: 1px solid #ccc;
+    height: 40px;
+    padding-left: 7px;
+}
+
+
+.profile-picture{
+
+}
+
+
+.namer-profile{
+    font-weight: bold;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-left: 86px;
+}
+
+
+/* .style-1{
+    overflow: hidden; 
+    cursor: pointer; display: inline-block; position: relative;
+}
+
+.style-2{
+    position: absolute; top: 0px; right: 0px; height: 100%; font-size: 100px; cursor: pointer;
+}
+
+.style-3{
+    margin-top: 12px;   
+} */
