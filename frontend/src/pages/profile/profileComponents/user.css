@@ -1,7 +1,7 @@
 .name{
     line-height: 0.5;
-    text-transform: capitalize;
     font-size: 30px;
+    text-transform:uppercase;
 }
 
 
