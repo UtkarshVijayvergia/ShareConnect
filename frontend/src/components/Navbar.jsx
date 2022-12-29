@@ -64,7 +64,9 @@ const Navbar = () => {
                                                 <FaUser/>  &nbsp; {user.name}
                                             </Link>
                                             <ul className="dropdown-menu dropdown-content" aria-labelledby="navbarDropdown">
-                                                <Link className="nav-link active"  aria-current="page" to="">Account</Link>
+                                                <Link className="nav-link active"  aria-current="page" to={`user/${user.name}`}>Account</Link>
+                                                <Link className="nav-link active"  aria-current="page" to={`user/${user.name}/${user._id}`}>Profile Details</Link>
+                                                <li><hr className="dropdown-divider"/></li>
                                                 <Link className="nav-link active"  aria-current="page" to="">Help</Link>
                                                 <li><hr className="dropdown-divider"/></li>
                                                 <Link className="nav-link active"  aria-current="page" to="/login" onClick={onLogout}>Logout</Link>
