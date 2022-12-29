@@ -11,7 +11,7 @@ import About from './pages/About';
 import Profile from './pages/profile/Profile';
 import LandingPage from './pages/LandingPage';
 import Error404 from './pages/Error404';
-import ProfileDetails from './pages/profileDetails/ProfileDetails';
+import AccountDetails from './pages/profileDetails/AccountDetails';
 
 function App() {
     const { user } = useSelector((state) => state.auth)
@@ -30,7 +30,7 @@ function App() {
                         <Route path='/about' element={<Profile/>} />
 
                         {user?(<Route path={`user/${user.name}`} element={<Profile/>} />):<></>}
-                        {user?(<Route path={`user/${user.name}/${user._id}`} element={<ProfileDetails/>} />):<></>}
+                        {user?(<Route path={`user/${user.name}/${user._id}`} element={<AccountDetails/>} />):<></>}
                         
                         <Route path='*' exact={true} element={<Error404/>} />
 
