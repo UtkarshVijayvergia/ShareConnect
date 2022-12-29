@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import './accountDetails.css'
 import AccountIntroDetails from './accountDetailsComponents/AccountIntroDetails'
+import PersonalDetails from './accountDetailsComponents/PersonalDetails'
 
 const AccountDetails = () => {
     const { user } = useSelector((state) => state.auth)
@@ -20,6 +21,8 @@ const AccountDetails = () => {
                 <AccountIntroDetails 
                     name = {user.name}
                 />
+                <hr />
+                <PersonalDetails />
             </div>
         </div>
     )   
