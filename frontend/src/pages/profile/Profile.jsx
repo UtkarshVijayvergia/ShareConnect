@@ -18,7 +18,7 @@ const Profile = () => {
     }, [user, navigate])
 
     return (
-        <div>
+        <div className='container'>
             {
                 user ? (<>
                     <div>
@@ -30,13 +30,14 @@ const Profile = () => {
                             <User 
                                 name = {user.name}
                                 email = {user.email}
+                                _id = {user._id}
                             />
                         </div>
                         <br /><br /><hr /><br />
                         <div className='recentPosts'>
                             <RecentPosts />
                         </div>
-                        <hr /><br />
+                        <hr />
                     </div>
                 </>)
                 :
