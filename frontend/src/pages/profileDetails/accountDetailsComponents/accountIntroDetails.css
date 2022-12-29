@@ -44,16 +44,16 @@ p{
 
 .namer-input{
     pointer-events: none;
-    width: 500px;
+    width: 600px;
     border: 1px solid #ccc;
     height: 40px;
     padding-left: 7px;
 }
 
 
-/* .profile-picture{
-
-} */
+.profile-picture{
+    display: flex;
+}
 
 
 .namer-profile{
@@ -64,15 +64,41 @@ p{
 }
 
 
-/* .style-1{
-    overflow: hidden; 
-    cursor: pointer; display: inline-block; position: relative;
+.accountPicContainer {
+    align-items: center;
+    height: 200px;
+    width: 200px;
+    background-size: cover;
 }
 
-.style-2{
-    position: absolute; top: 0px; right: 0px; height: 100%; font-size: 100px; cursor: pointer;
+
+.accountPic {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    /* border-radius: 50%; */
+    object-fit: cover;
 }
 
-.style-3{
-    margin-top: 12px;   
-} */
+
+.profilePic-upload{
+    padding-left: 30px;
+    padding-top: 20px;
+}
+
+
+.btn-edit-sm{
+    border-radius: 0.5 !important;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    background-color: rgb(24, 88, 165);
+    border: 1px solid rgb(35, 97, 173);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+
+
+.profilePic-size{
+    padding-top: 15px;
+    font-size: 14px;
+}
