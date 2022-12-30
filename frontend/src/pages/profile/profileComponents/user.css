@@ -7,23 +7,14 @@
 
 .email {
     font-size: 20px;
+    line-height: 55px;
 }
 
 
 .btn {
     background-color: #54aeff;
-    /* color: yellow!important; */
 }
 
 .btn:hover {
     background-color: #0969da; 
-}
-
-.navigate {
-    text-decoration: none;
-    color: white;
-}
-.navigate:hover {
-    text-decoration: none;
-    color: white;
 }

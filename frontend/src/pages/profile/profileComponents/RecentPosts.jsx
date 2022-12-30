@@ -4,7 +4,7 @@ import './recentPosts.css'
 const RecentPosts = () => {
   return (
     <div>
-        <div className="heading">
+        <div className="heading-recentPost">
             <p>
                 Recent Posts
             </p>

@@ -9,8 +9,9 @@ const User = (props) => {
                 <p className='name'>{props.name}</p>
                 <p className='email'>{props.email}</p>
             </div>
-            <div className='btn btn-sm btn-success'>
-                <Link className='navigate' to={`/user/${props.name}/${props._id}`}>Edit Profile Details</Link>
+            <br />
+            <div className='btn-account-placement'>
+                <Link className='btn btn-success btn-edit' to={`/user/${props.name}/${props._id}`}>Edit Profile Details</Link>
             </div>
         </div>
     )
