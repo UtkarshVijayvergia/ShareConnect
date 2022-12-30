@@ -27,7 +27,6 @@ function App() {
                         <Route path='/login' element={<Login/>} />
                         <Route path='/register' element={<Register/>} />
                         <Route path='/contact' element={<About/>} />
-                        <Route path='/about' element={<Profile/>} />
 
                         {user?(<Route path={`user/${user.name}`} element={<Profile/>} />):<></>}
                         {user?(<Route path={`user/${user.name}/${user._id}`} element={<AccountDetails/>} />):<></>}

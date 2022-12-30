@@ -54,7 +54,7 @@ const Navbar = () => {
                                             <Link className="nav-link active" aria-current="page" to="/home">Home</Link>
                                         </li>
                                         <li className="nav-item px-2">
-                                            <Link className="nav-link active" aria-current="page" to="/about">Profile</Link>
+                                            <Link className="nav-link active" aria-current="page" to={`user/${user.name}`}>Profile</Link>
                                         </li>
                                         <li className="nav-item  padder">
                                             <Link className="nav-link active" aria-current="page" to="/contact">Contact</Link>
