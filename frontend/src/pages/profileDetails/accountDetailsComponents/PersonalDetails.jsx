@@ -37,7 +37,7 @@ const PersonalDetails = () => {
             <div className='info'>
                 <div className='bio'>
                     <p className='label-bio'>About Me </p>
-                    <textarea className='bio-area' rows="6" aria-invalid="false" aria-describedby="" name="bio" placeholder="Tell us about yourself, such as what you do, what your interests are, and what you hope to get out of your courses." aria-label="About Me"></textarea>
+                    <textarea className='bio-area' rows="6" aria-invalid="false" aria-describedby="" name="bio" placeholder="Tell us about yourself, such as what you do or what your interests are" aria-label="About Me"></textarea>
                 </div>
                 <br />
                 <div className='age'>
@@ -63,7 +63,7 @@ const PersonalDetails = () => {
                     <div className='birth-input'>
                         <label className='birth-padder'>
                             <select className='birth-day-padder' value={selectedDay} onChange={handleDayChange}>
-                                <option value="">Day</option>
+                                <option value=""> Day</option>
                                 {[...Array(31).keys()].map((i) => (
                                     <option key={i + 1} value={i + 1}>
                                         {i + 1}
@@ -74,7 +74,7 @@ const PersonalDetails = () => {
                         <br />
                         <label className='birth-padder'>
                             <select className='birth-month-padder' value={selectedMonth} onChange={handleMonthChange}>
-                                <option value="">Month</option>
+                                <option value=""> Month</option>
                                 <option value="1">January</option>
                                 <option value="2">February</option>
                                 <option value="3">March</option>
@@ -92,7 +92,7 @@ const PersonalDetails = () => {
                         <br />
                         <label className='birth-padder'>
                             <select className='birth-year-padder' value={selectedYear} onChange={handleYearChange}>
-                                <option value="">Year</option>
+                                <option value=""> Year</option>
                                 {[...Array(100).keys()].map((i) => (
                                     <option key={2020 - i} value={2020 - i}>
                                         {2020 - i}
@@ -101,6 +101,26 @@ const PersonalDetails = () => {
                             </select>
                         </label>
                     </div>
+                </div>
+                <br />
+                <div className='country'>
+                    <p className='label-country'>Country </p>
+                    <input className="country-input" type="text" id='country' name='country' value="" />
+                </div>
+                <br />
+                <div className='state'>
+                    <p className='label-state'>State </p>
+                    <input className="state-input" type="text" id='state' name='state' value="" />
+                </div>
+                <br />
+                <div className='city'>
+                    <p className='label-city'>City </p>
+                    <input className="city-input" type="text" id='city' name='city' value="" />
+                </div>
+                <br />
+                <div className='phone'>
+                    <p className='label-phone'>Phone </p>
+                    <input className="phone-input" type="text" id='phone' name='phone' pattern='^\d{10}$' value="" placeholder='ex 123 456 7890' />
                 </div>
                 <br />
             </div>

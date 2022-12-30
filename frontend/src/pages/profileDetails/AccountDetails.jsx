@@ -24,6 +24,7 @@ const AccountDetails = () => {
                 <hr />
                 <PersonalDetails />
             </div>
+            <br /><br />
         </div>
     )   
 }
