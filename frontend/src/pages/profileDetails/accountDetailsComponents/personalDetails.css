@@ -181,3 +181,31 @@
     height: 40px;
     padding-left: 7px;
 }
+
+
+
+.profileDetails-warning{
+    padding-left: 200px;
+    padding-right: 600px;
+    font-size: 10px;
+}
+    
+    
+
+.profile-btn-place{
+    padding-left: 250px;
+    padding-top: 15px;
+}
+.btn-editor{
+    border-radius: 0 !important;
+    /* font-size:  30px; */
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    /* background-color: rgb(42, 115, 204); */
+    /* border: 1px solid rgb(42, 115, 204); */
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+}
+.btn-editor:focus{
+    background-color: rgb(0, 0, 0);
+}

@@ -7,8 +7,8 @@ import PersonalDetails from './accountDetailsComponents/PersonalDetails'
 
 const AccountDetails = () => {
     const { user } = useSelector((state) => state.auth)
-    return (
 
+    return (
         <div className='univ'>
             <div className="cardcontainer card">
                 <div className='accountDetails-header'>
@@ -22,7 +22,8 @@ const AccountDetails = () => {
                     name = {user.name}
                 />
                 <hr />
-                <PersonalDetails />
+                <PersonalDetails 
+                />
             </div>
             <br /><br />
         </div>
