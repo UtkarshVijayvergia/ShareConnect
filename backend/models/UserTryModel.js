@@ -8,16 +8,21 @@ const userTrySchema = mongoose.Schema({
     },
     textField1:{
         type:String,
-        required:[true,'Please add textField1 value']
+        required:[false,'Please add textField1 value']
     },
     textField2:{
         type:String,
-        required:[true,'Please add a textField2 value']
+        required:[false,'Please add a textField2 value']
     },
     textField3:{
         type:String,
-        required:[true,'Please add a textField3 value']
+        required:[false,'Please add a textField3 value']
     },
+    // image:{
+    //     data:Buffer,
+    //     contentType: String,
+    //     required:[false],
+    // },
 },
 {
     timestamps: true

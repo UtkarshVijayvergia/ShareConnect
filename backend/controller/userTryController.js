@@ -1,5 +1,17 @@
 const asyncHandler = require("express-async-handler")
 const UserTry = require("../models/UserTryModel")
+const multer = require('multer')
+
+
+// const Storage = multer.diskStorage({
+//     destination: 'uploads',
+//     filename:(req, file, cb) => {
+//         cb(null, file.originalname)
+//     },
+// })
+// const upload = multer({
+//     storage: Storage
+// }).single('image')
 
 
 // @desc     GET UserTry
@@ -30,11 +42,26 @@ const setUserTry = asyncHandler(async (req,res) => {
         throw new Error('Please add a textField3 field')
     }
 
+    // if(req.body.image)
+    // let newImage;
+    // upload(req, res, (err) => {
+    //     if(err){
+    //         console.log(err);
+    //     }
+    //     else{
+    //         newImage = req.file.filename;
+    //     }
+    // })
+
     const test = await UserTry.create({
         textField1: req.body.textField1,
         textField2: req.body.textField2,
         textField3: req.body.textField3,
-        user: req.user.id
+        user: req.user.id,
+        // image: {
+        //     data: newImage,
+        //     contentType: "image/png",
+        // }
     })
     res.status(200).json(test)
 })
@@ -48,6 +75,12 @@ const setUserTry = asyncHandler(async (req,res) => {
 const getoneUserTry = asyncHandler(async (req,res) => {
     const test = await UserTry.find({ user: req.params.id }, 'textField1 textField2 textField3' ).exec();
     if(!test){
+        // test = await UserTry.create({
+        //     textField1: "null",
+        //     textField2: "null",
+        //     textField3: "null",
+        //     user: req.params.id,
+        // })
         res.status(400)
         throw new Error('User Try not found')
     }
