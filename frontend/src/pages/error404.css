@@ -1,0 +1,14 @@
+.body {
+    font-family: sans-serif;
+    color: #999;
+    text-align: center;
+}
+
+.header {
+    font-size: 4em;
+    margin: 0.67em 0;
+}
+
+.subHeader {
+    margin: 1em 0;
+}

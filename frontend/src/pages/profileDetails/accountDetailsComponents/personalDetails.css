@@ -1,0 +1,211 @@
+.head2{
+    text-align: left;
+}
+
+
+.head-personal{
+    font-size: 24px;
+    font-weight: 100;
+}
+
+
+.head-para{
+    font-weight: 100;
+    font-size: 15px;
+}
+
+
+
+.bio{
+    display: flex;
+    padding-top: 20px;
+    padding-left: 110px;
+}
+.label-bio{
+    font-weight: bold;
+    padding-right: 20px;
+    padding-top: 7px;
+}
+.bio-area{
+    width: 600px;
+    /* border: 1px solid #ccc; */
+    height: 140px;
+    padding-left: 7px;
+}
+
+
+
+.age{
+    display: flex;
+    padding-top: 20px;
+    padding-left: 154px;
+}
+.label-age{
+    font-weight: bold;
+    padding-right: 20px;
+    padding-top: 7px;
+}
+.age-input{
+    width: 70px;
+    height: 40px;
+    padding-left: 7px;
+}
+
+
+
+.gender{
+    display: flex;
+    padding-top: 20px;
+    padding-left: 128px;
+}
+.label-gender{
+    font-weight: bold;
+    padding-right: 20px;
+    padding-top: 7px;
+}
+.gender-input label{
+    width: 210px;
+    height: 40px;
+    font-size: 18px;
+}
+.gender-padder{
+    padding-left: 8px;
+}
+
+
+
+.birth{
+    display: flex;
+    padding-top: 20px;
+    padding-left: 120px;
+}
+.label-birth{
+    font-weight: bold;
+    padding-right: 20px;
+    padding-top: 7px;
+}
+.birth-input{
+    display: flex;
+    align-items: flex-end;
+}
+.birth-input select {
+    height: 40px;
+    border-radius: 3px;
+}
+.birth-input selection{
+    display: flex;
+    justify-content: center;
+}
+.birth-padder{
+    padding-right: 15px;
+    align-items: center;
+}
+.birth-day-padder{
+    width: 60px;
+}
+.birth-month-padder{
+    width: 100px;
+}
+.birth-year-padder{
+    width: 80px;
+}
+
+
+
+.country{
+    display: flex;
+    padding-top: 20px;
+    padding-left: 121px;
+}
+.label-country{
+    font-weight: bold;
+    padding-right: 20px;
+    padding-top: 7px;
+}
+.country-input{
+    width: 610px;
+    height: 40px;
+    padding-left: 7px;
+}
+
+
+
+.state{
+    display: flex;
+    padding-top: 20px;
+    padding-left: 143px;
+}
+.label-state{
+    font-weight: bold;
+    padding-right: 20px;
+    padding-top: 7px;
+}
+.state-input{
+    width: 610px;
+    height: 40px;
+    padding-left: 7px;
+}
+
+
+
+.city{
+    display: flex;
+    padding-top: 20px;
+    padding-left: 151px;
+}
+.label-city{
+    font-weight: bold;
+    padding-right: 20px;
+    padding-top: 7px;
+}
+.city-input{
+    width: 610px;
+    height: 40px;
+    padding-left: 7px;
+}
+
+
+
+.phone{
+    display: flex;
+    padding-top: 20px;
+    padding-left: 132px;
+}
+.label-phone{
+    font-weight: bold;
+    padding-right: 20px;
+    padding-top: 7px;
+}
+.phone-input{
+    width: 610px;
+    height: 40px;
+    padding-left: 7px;
+}
+
+
+
+.profileDetails-warning{
+    padding-left: 200px;
+    padding-right: 600px;
+    font-size: 10px;
+}
+    
+    
+
+.profile-btn-place{
+    padding-left: 250px;
+    padding-top: 15px;
+}
+.btn-editor{
+    border-radius: 0 !important;
+    /* font-size:  30px; */
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    /* background-color: rgb(42, 115, 204); */
+    /* border: 1px solid rgb(42, 115, 204); */
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+}
+.btn-editor:focus{
+    background-color: rgb(0, 0, 0);
+}

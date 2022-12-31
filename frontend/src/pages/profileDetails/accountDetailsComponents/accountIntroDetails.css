@@ -1,0 +1,104 @@
+
+.accountDetails-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+p{
+    margin-bottom: auto;
+}
+
+
+.head1{
+    text-align: left;
+}
+
+
+.head-intro{
+    font-size: 24px;
+    font-weight: 100;
+}
+
+
+.head-p{
+    font-weight: 100;
+    font-size: 15px;
+}
+
+
+.namer{
+    display: flex;
+    padding-top: 20px;
+    padding-left: 150px;
+}
+
+
+.namer-name{
+    font-weight: bold;
+    padding-right: 20px;
+    padding-top: 7px;
+}
+
+
+.namer-input{
+    pointer-events: none;
+    width: 600px;
+    border: 1px solid #ccc;
+    height: 40px;
+    padding-left: 7px;
+}
+
+
+.profile-picture{
+    display: flex;
+}
+
+
+.namer-profile{
+    font-weight: bold;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-left: 86px;
+}
+
+
+.accountPicContainer {
+    align-items: center;
+    height: 200px;
+    width: 200px;
+    background-size: cover;
+}
+
+
+.accountPic {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    /* border-radius: 50%; */
+    object-fit: cover;
+}
+
+
+.profilePic-upload{
+    padding-left: 30px;
+    padding-top: 20px;
+}
+
+
+.btn-edit-sm{
+    border-radius: 0.5 !important;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    background-color: rgb(24, 88, 165);
+    border: 1px solid rgb(35, 97, 173);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+
+
+.profilePic-size{
+    padding-top: 15px;
+    font-size: 14px;
+}

@@ -1,0 +1,14 @@
+.ProfilePic{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+
+.user{
+    /* display: flex; */
+    padding-top: 25px;
+    text-align: center;
+}
+

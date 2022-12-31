@@ -1,0 +1,21 @@
+.verticalLine {
+    border-left: 1px solid #000000;
+}
+
+
+.padder {
+    padding-right: 30px;
+}
+
+
+.dropper {
+    padding-left: 30px;
+    padding-right: 30px;
+    border-left: 2px solid #c6c6c6;
+}
+
+
+.navbar .dropdown-menu li {
+    margin-top: -5px;
+    margin-bottom: -5px;
+}

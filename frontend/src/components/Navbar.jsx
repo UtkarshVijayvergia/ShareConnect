@@ -3,6 +3,7 @@ import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
+import './navbar.css'
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -39,6 +40,7 @@ const Navbar = () => {
                             </>
                         )
                     }
+                    
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">           
                         </ul>
@@ -52,14 +54,27 @@ const Navbar = () => {
                                             <Link className="nav-link active" aria-current="page" to="/home">Home</Link>
                                         </li>
                                         <li className="nav-item px-2">
-                                            <Link className="nav-link active" aria-current="page" to="/about">About-Me</Link>
+                                            <Link className="nav-link active" aria-current="page" to={`user/${user.name}`}>Profile</Link>
                                         </li>
-                                        <li className="nav-item px-2">
+                                        <li className="nav-item  padder">
                                             <Link className="nav-link active" aria-current="page" to="/contact">Contact</Link>
                                         </li>
-                                        <li className="nav-item px-2">
-                                            <Link className="nav-link active"  aria-current="page" to="/login" onClick={onLogout}>Logout</Link>
+                                        <li className="nav-item dropdown dropper">
+                                            <Link className="nav-link active dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <FaUser/>  &nbsp; {user.name}
+                                            </Link>
+                                            <ul className="dropdown-menu dropdown-content" aria-labelledby="navbarDropdown">
+                                                <Link className="nav-link active"  aria-current="page" to={`user/${user.name}`}>Account</Link>
+                                                <Link className="nav-link active"  aria-current="page" to={`user/${user.name}/${user._id}`}>Profile Details</Link>
+                                                <li><hr className="dropdown-divider"/></li>
+                                                <Link className="nav-link active"  aria-current="page" to="">Help</Link>
+                                                <li><hr className="dropdown-divider"/></li>
+                                                <Link className="nav-link active"  aria-current="page" to="/login" onClick={onLogout}>Logout</Link>
+                                            </ul>
                                         </li>
+                                        {/* <li className="nav-item px-2">
+                                            <Link className="nav-link active"  aria-current="page" to="/login" onClick={onLogout}>Logout</Link>
+                                        </li> */}
                                     </>
                                 )
                                 :

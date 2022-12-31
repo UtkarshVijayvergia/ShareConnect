@@ -1,0 +1,42 @@
+ /* {
+    background-color: rgb(206, 206, 206);
+} */
+
+
+.cardcontainer{
+    margin-top: 35px;
+    max-width: 1425px;
+    display: flex;
+    margin-left: 50px;
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    
+}
+
+
+.mainHeading{
+    text-align: left;
+    font-size: 35px;
+}
+
+
+.btn-placement{
+    padding-right: 55px;
+    padding-bottom: 15px;
+}
+
+
+.btn-edit{
+    border-radius: 0 !important;
+    /* font-size:  30px; */
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    background-color: rgb(42, 115, 204);
+    border: 1px solid rgb(42, 115, 204);
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+}
+.btn-edit:hover{
+    background-color: rgb(33, 86, 222);
+}

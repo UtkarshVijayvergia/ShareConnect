@@ -2,6 +2,9 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
+const UserDetails = require('../models/userDetailsModel')
+
+
 
 
 // @desc    Register new user
@@ -37,7 +40,23 @@ const registerUser = asyncHandler(async (req,res) => {
         email,
         password: hashedPassword,
     })
+    // initialize a null record in userDetails collection
     if(user){
+        const userDetails = await UserDetails.create({
+            user: user._id,
+            bio: "",
+            age: "",
+            gender: "",
+            birth: {
+                day: "",
+                month: "",
+                year: "",
+            },
+            country: "",
+            state: "",
+            city: "",
+            phone: "",
+        })
         res.status(201).json({
             _id: user.id,
             name: user.name,
@@ -50,6 +69,8 @@ const registerUser = asyncHandler(async (req,res) => {
         throw new Error('Invalid user data')
     }
 })
+
+
 
 
 // @desc    Authenticate a user
@@ -75,6 +96,8 @@ const loginUser = asyncHandler(async (req,res) => {
 })
 
 
+
+
 // @desc    Get user data
 // @route   GET /api/users/me
 // @access  Private  
@@ -84,15 +107,18 @@ const getMe = asyncHandler(async (req,res) => {
 
 
 
-// Generate JWT
-const generateToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' })
-}
-
-
-
 module.exports = {
     registerUser,
     loginUser,
     getMe,
+}
+
+
+
+
+
+
+// Generate JWT
+const generateToken = (id) => {
+    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' })
 }
