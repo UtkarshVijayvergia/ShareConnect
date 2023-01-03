@@ -49,8 +49,7 @@ const setImage = asyncHandler(async (req, res) => {
 // @access  Public
 const getImage =  asyncHandler(async (req, res) => {
     const image = await Image.find({ name: req.params.id });
-    console.log(image);
-    if(!image.name){
+    if(!image[0]){
         res.status(400)
         throw new Error('Image does not exist')
     }
