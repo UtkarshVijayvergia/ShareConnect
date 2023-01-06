@@ -67,7 +67,52 @@ const getImage =  asyncHandler(async (req, res) => {
 
 
 
+
+// @desc    GET Image
+// @route   GET /api/image
+// @access  Public
+const getAllImage =  asyncHandler(async (req, res) => {
+    // const image = await Image.find({ name: req.params.id });
+    // if(!image[0]){
+    //     res.status(400)
+    //     throw new Error('Image does not exist')
+    // }
+    // const root = path.resolve('./uploads');
+    // const filePath = path.join(root, `testImage/${req.params.id}`);
+    // // Check if the file is in the correct folder
+    // fs.access(filePath, fs.constants.F_OK, (error) => {
+    //     if (error) {
+    //         res.status(404).send('File not found');
+    //     } else {
+    //         res.sendFile(`testImage/${req.params.id}`, { root: root });
+    //     }
+    // });
+    const test = await Image.find();
+    for(var i=0;i<test.length;i++){
+        if(test[i].name){
+            console.log(test[i].name);
+            var name = test[i].name;
+            const root = path.resolve('./uploads');
+            const filePath = path.join(root, `testImage/${name}`);
+            // Check if the file is in the correct folder
+            fs.access(filePath, fs.constants.F_OK, (error) => {
+                if (error) {
+                    res.status(404).send('File not found');
+                } else {
+                    res.sendFile(`testImage/${name}`, { root: root });
+                }
+            });
+            console.log("qwertyu");
+        }
+        console.log("done");
+    }
+    // res.status(200).json(test);
+});
+
+
+
 module.exports = {
     setImage,
-    getImage
+    getImage,
+    getAllImage,
 }

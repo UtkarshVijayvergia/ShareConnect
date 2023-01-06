@@ -212,7 +212,7 @@ const PersonalDetails = () => {
                 <br /><br />
                 <p className='profileDetails-warning'>Note: Discussion forum posts will always show your name and profile image to other people. They can also see your detail information if you want to show them by turning on details Privacy in advanced settings. Read our Privacy Policy to learn more.</p>
                 <div className="profile-btn-place">
-                    <button tabindex="-1" type="submit" className="btn btn-lg btn-primary btn-editor" style={{backgroundColor: buttonColor}} onClick={submit}>{buttonText}</button>
+                    <button tabIndex="-1" type="submit" className="btn btn-lg btn-primary btn-editor" style={{backgroundColor: buttonColor}} onClick={submit}>{buttonText}</button>
                 </div>
                 <br />
                 <p className='profileDetails-warning'>{afterButtonText}</p>
