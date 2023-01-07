@@ -2,12 +2,13 @@ const express = require('express')
 const router = express.Router()
 const {  getProfilePic, setProfilePic } = require('../controller/userProfilePicController')
 const { protect } = require('../middleware/authMiddleware')
+const { upload } = require('../middleware/imageMiddleware')
 
 // Configure cors
 const cors = require('cors');
 router.use(cors());
 
 
-router.route('/:id').get(protect, getProfilePic).post(protect, setProfilePic);
+router.route('/:id').get(protect, getProfilePic).post(protect, upload, setProfilePic);
 
 module.exports = router;

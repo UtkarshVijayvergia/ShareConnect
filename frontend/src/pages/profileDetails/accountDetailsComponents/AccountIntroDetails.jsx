@@ -6,17 +6,17 @@ import './accountIntroDetails.css'
 
 const AccountIntroDetails = (props) => {
     const { user } = useSelector((state) => state.auth)
-    const fileInput = useRef(null);
+    // const fileInput = useRef(null);
 
 
     const [imageUrl, setImageUrl] = useState(null);
+    const [imageFile, setImageFile] = useState({});
 
 
     // Get user profile pic
     const getImage = async () => {
         try{
             const response = await fetch(`http://localhost:5000/api/user/profilepic/${user._id}`, {
-                method: "GET",
                 headers: {
                     Authorization: `Bearer ${user.token}`,
                     'Content-Type': 'application/json',
@@ -40,41 +40,44 @@ const AccountIntroDetails = (props) => {
     }, []);
 
 
-    const handleClick = () => {
-        // console.log("clicked");
-        fileInput.current.click();
+    // const handleClick = () => {
+    //     fileInput.current.click();
+    // };
+
+    const handleChange = e => {
+        const file = e.target.files[0];
+        setImageFile(file);
+        // reader.readAsDataURL(file);
+        // console.log(file.type);
     };
 
-    // const formData = new FormData();
-    const handleChange = async (e) => {
-        const file = e.target.files[0];
+    const submit = async (e) => {
+        e.preventDefault();
+        // const file = e.target.files[0];
         const formData = new FormData();
-        formData.append('file', file);
-        formData.append('otherData', 'some value');
-        // console.log(formData.get('file'));
-        await fetch(`http://localhost:5000/api/user/profilepic/${user._id}`, {
+        formData.append('file', imageFile);
+        // formData.append('otherData', 'some value');
+        console.log(formData.get('file'));
+        console.log("try");
+        const response = await fetch(`http://localhost:5000/api/user/profilepic/${user._id}`, {
             method: "POST",
+            body: formData,
             headers:{
                 Authorization: `Bearer ${user.token}`,
-                Accept: 'application/json',
                 'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>',
             },
-            body: formData,
-            // body: JSON.stringify(formData),
-            // JSON.stringify({
-            //     name: file.name,
-            //     image: {
-            //         data: file.name,
-            //         contentType: file.type,
-            //     }
-            // })
+            // data: formData,
         })
-        // console.log("changed");
+        if (!response.ok) {
+            console.error(response.statusText);
+        } 
+        else {
+            const data = await response.json();
+            console.log(data);
+        }
     };
 
-    // const submit = async (e) => {
-    //     e.preventDefault();
-    //     const file = e.target.files[0];
+        // console.log("qwertyujhbv");
     // }
 
     return (
@@ -85,7 +88,7 @@ const AccountIntroDetails = (props) => {
                 <div className='info'>
                     <div className='namer'>
                         <p className='namer-name'>Name </p>
-                        <input type="text" className="namer-input" id='textField1' name='textField1' value={props.name} />
+                        <input type="text" className="namer-input" id='textField1' name='textField1' value={props.name} readOnly />
                     </div>
                     <br />
                     <div className='profile-picture'>
@@ -95,14 +98,17 @@ const AccountIntroDetails = (props) => {
                             <img className='accountPic' src={imageUrl} alt="Profile Picture" />
                         </div>
                         <div>
-                            <div className='profilePic-upload'>
-                                <button className='btn btn-primary btn-edit-sm' onClick={handleClick}>Choose a file</button>
-                                <div className='profilePic-size'>
-                                    <p>Maximum size of 1MB. JPG, JPEG, or PNG.</p>
+                            <form onSubmit={submit}>
+                                <div className='profilePic-upload'>
+                                    {/* <button className='btn btn-primary btn-edit-sm' onClick={handleClick}>Choose a file</button> */}
+                                    <div className='profilePic-size'>
+                                        <p>Maximum size of 1MB. JPG, JPEG, or PNG.</p>
+                                    </div>
+                                    <input type="file" onChange={handleChange}  />
+                                    <br />
+                                    <button className='btn btn-sm btn-primary'>change</button>
                                 </div>
-                                <input type="file" ref={fileInput} onChange={handleChange} style={{ display: 'none' }} />
-                                {/* <button className='btn btn-sm btn-primary' onChange={submit}>change</button> */}
-                            </div>
+                            </form>
                         </div>
                     </div>
                     <br />
