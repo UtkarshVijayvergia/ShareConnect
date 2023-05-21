@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom'
 import './accountDetails.css'
 import AccountIntroDetails from './accountDetailsComponents/AccountIntroDetails'
 import PersonalDetails from './accountDetailsComponents/PersonalDetails'
+import ImageUpload from './accountDetailsComponents/ImageUpload'
 
 const AccountDetails = () => {
     const { user } = useSelector((state) => state.auth)
 
     return (
         <div className='univ'>
+            {/* <ImageUpload /> */}
             <div className="cardcontainer card">
                 <div className='accountDetails-header'>
                     <p className='mainHeading'>Edit My Profile</p>

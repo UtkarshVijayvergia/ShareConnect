@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs')
 const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
 const UserDetails = require('../models/userDetailsModel')
+const UserProfilePic = require('../models/userProfilePicModel')
 
 
 
@@ -40,8 +41,8 @@ const registerUser = asyncHandler(async (req,res) => {
         email,
         password: hashedPassword,
     })
-    // initialize a null record in userDetails collection
     if(user){
+        // initialize a null record in userDetails collection
         const userDetails = await UserDetails.create({
             user: user._id,
             bio: "",
@@ -57,6 +58,36 @@ const registerUser = asyncHandler(async (req,res) => {
             city: "",
             phone: "",
         })
+
+        // initialize a default record in userProfilePic collection
+        const userProfilePic = await UserProfilePic.create({
+            user: user._id,
+            image: {
+              data: Buffer.from([
+                68,
+                101,
+                97,
+                116,
+                104,
+                32,
+                110,
+                111,
+                116,
+                101,
+                32,
+                45,
+                32,
+                76,
+                46,
+                106,
+                112,
+                103
+              ]),
+              contentType: "image/png"
+            },
+            name: "Death note - L.jpg",
+        });
+
         res.status(201).json({
             _id: user.id,
             name: user.name,
