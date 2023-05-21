@@ -13,7 +13,6 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use('/api/users', require('./routes/userRoutes'))
 app.use('/api/usertry', require('./routes/userTryRoutes'))
-app.use('/api/image', require('./routes/imageRoutes'))
 app.use('/api/user/details', require('./routes/userDetailsRoutes'))
 app.use('/api/user/profilepic', require('./routes/userProfilePicRoutes'))
 
