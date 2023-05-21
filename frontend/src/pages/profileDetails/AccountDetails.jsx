@@ -11,7 +11,7 @@ const AccountDetails = () => {
 
     return (
         <div className='univ'>
-            <ImageUpload />
+            {/* <ImageUpload /> */}
             <div className="cardcontainer card">
                 <div className='accountDetails-header'>
                     <p className='mainHeading'>Edit My Profile</p>
