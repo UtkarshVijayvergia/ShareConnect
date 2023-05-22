@@ -1,0 +1,56 @@
+.landing-setPage{
+    min-height: 80vh;
+}
+
+
+.landing-div-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.divider{
+    display: grid;
+    grid-template-columns: 55% 45%;
+    grid-gap: 0px; 
+}
+
+
+.left-grid {
+    padding-top: 11vh;
+    padding-left: 4vw;
+}
+
+.right-grid {
+    padding-top: 3vw;
+    padding-left: 5vh;
+}
+
+
+.tag-line{
+    font-style: italic;
+}
+
+
+.intro{
+    padding-top: 7vh;
+    font-style: italic;    
+}
+
+
+.end{
+    padding-top: 5vh;
+    font-style: italic;
+}
+
+
+.login-nav{
+    padding-top: 5vh;
+    display: flex;
+    align-items: center;
+}
+
+.login-nav-btn{
+    padding-left: 15px;
+}
