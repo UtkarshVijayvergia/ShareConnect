@@ -1,0 +1,81 @@
+.setPage{
+    min-height: 80vh;
+}
+
+
+.div-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card{
+    background-color: #FFFFFF;
+    border: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+.login-card{
+    min-width: 55vw;
+    min-height: 50vh; 
+}
+
+
+.img-login{
+    padding-top: 10vh;
+    padding-left: 7vw;
+    padding-bottom: 2vh;
+}
+
+
+.toRegister{
+    padding-top: 2vh;
+    padding-left: 12vw;
+    padding-bottom: 6vh;
+}
+
+
+.rightCol{
+    padding-left: 3vw;
+}
+
+
+.card-heading{
+    padding-top: 8vh;
+    padding-bottom: 1vh;
+}
+
+
+.formPadder{
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+
+.inputTaker{
+    border-color: black;
+    border-radius: 0%;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    max-width: 17vw;
+}
+
+
+.faFig{
+    margin-left: -10px;
+    margin-right: 13px;
+}
+
+
+.borderRemover{
+    border: none;
+    outline: none;
+}
+
+
+.submitForm{
+    padding-top: 5vh;
+}
