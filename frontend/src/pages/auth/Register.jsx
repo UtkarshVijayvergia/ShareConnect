@@ -93,10 +93,10 @@ const Register = () => {
                     <div className='row'>
                         <div className="col">
                             <div className='register-img-login'>
-                                <img src={require(`./images/signup.jpg`)} height="275px" alt="ShareConnect"/>
+                                <img src={require(`../../assets/images/auth/register.jpg`)} height="275px" alt="ShareConnect"/>
                             </div>
                             <div className='toLogin'>
-                                <Link className="nav-link active" aria-current="page" to={`/login`}>Already A Registered User? Login</Link>
+                                <p>Already A Registered User? <b><Link to={`/login`}>Login</Link></b></p>
                             </div>
                         </div>
                         <div className="col">
@@ -108,28 +108,28 @@ const Register = () => {
                                     <form onSubmit={onSubmit}>
                                         <div className="form-group register-formPadder">
                                             <div className='register-inputTaker form-control'>
-                                                <FaUser className='faFig'/>
-                                                <input className="register-borderRemover" type="text" id='name' name='name' value={name} placeholder='Your Name' onChange={onChange}/>
+                                                <FaUser className='register-faFig'/>
+                                                <input type="text" id='name' name='name' value={name} placeholder='Your Name' onChange={onChange}/>
                                             </div>
                                         </div>
 
                                         <div className="form-group register-formPadder">
                                             <div className='register-inputTaker form-control'>
-                                                <FaEnvelope className='faFig'/>
-                                                <input className="register-borderRemover" type="email" id='email' name='email' value={email} placeholder='Your Email' onChange={onChange}/>
+                                                <FaEnvelope className='register-faFig'/>
+                                                <input type="email" id='email' name='email' value={email} placeholder='Your Email' onChange={onChange}/>
                                             </div>
                                         </div>
 
                                         <div className="form-group register-formPadder">
                                             <div className='register-inputTaker form-control'>
-                                                <FaLock className='faFig'/>
-                                                <input className="register-borderRemover" type="password" id='password' name='password' value={password} placeholder='Your Password' onChange={onChange}/>
+                                                <FaLock className='register-faFig'/>
+                                                <input type="password" id='password' name='password' value={password} placeholder='Your Password' onChange={onChange}/>
                                             </div>
                                         </div>
                                         <div className="form-group register-formPadder">
                                             <div className='register-inputTaker form-control'>
-                                                <FaUserLock className='faFig'/>
-                                                <input className="register-borderRemover" type="password" id='confirmPassword' name='confirmPassword' value={confirmPassword} placeholder='Confirm Password' onChange={onChange}/>
+                                                <FaUserLock className='register-faFig'/>
+                                                <input type="password" id='confirmPassword' name='confirmPassword' value={confirmPassword} placeholder='Confirm Password' onChange={onChange}/>
                                             </div>
                                         </div>
                                         <div className="form-group register-submitForm">
