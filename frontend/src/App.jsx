@@ -9,7 +9,7 @@ import Register from './pages/auth/Register';
 import Navbar from './components/Navbar';
 import About from './pages/About';
 import Profile from './pages/profile/Profile';
-import LandingPage from './pages/LandingPage';
+import LandingPage from './pages/landingPage/LandingPage';
 import Error404 from './pages/Error404';
 import AccountDetails from './pages/profileDetails/AccountDetails';
 
