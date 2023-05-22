@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { FaUser, FaEnvelope, FaUserLock, FaLock } from 'react-icons/fa'
 import { register, reset } from '../../features/auth/authSlice'
+import { FaUser, FaEnvelope, FaUserLock, FaLock } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 import Spinner from '../../components/Spinner'
 import './register.css'
@@ -108,7 +108,6 @@ const Register = () => {
                                     <form onSubmit={onSubmit}>
                                         <div className="form-group register-formPadder">
                                             <div className='register-inputTaker form-control'>
-                                            {/* <div className="form-group login-textarea-control"> */}
                                                 <FaUser className='faFig'/>
                                                 <input className="register-borderRemover" type="text" id='name' name='name' value={name} placeholder='Your Name' onChange={onChange}/>
                                             </div>
@@ -116,7 +115,6 @@ const Register = () => {
 
                                         <div className="form-group register-formPadder">
                                             <div className='register-inputTaker form-control'>
-                                            {/* <div className="form-group login-textarea-control"> */}
                                                 <FaEnvelope className='faFig'/>
                                                 <input className="register-borderRemover" type="email" id='email' name='email' value={email} placeholder='Your Email' onChange={onChange}/>
                                             </div>
@@ -124,26 +122,16 @@ const Register = () => {
 
                                         <div className="form-group register-formPadder">
                                             <div className='register-inputTaker form-control'>
-                                            {/* <div className="form-group login-textarea-control"> */}
                                                 <FaLock className='faFig'/>
                                                 <input className="register-borderRemover" type="password" id='password' name='password' value={password} placeholder='Your Password' onChange={onChange}/>
                                             </div>
                                         </div>
                                         <div className="form-group register-formPadder">
                                             <div className='register-inputTaker form-control'>
-                                            {/* <div className="form-group login-textarea-control"> */}
                                                 <FaUserLock className='faFig'/>
                                                 <input className="register-borderRemover" type="password" id='confirmPassword' name='confirmPassword' value={confirmPassword} placeholder='Confirm Password' onChange={onChange}/>
                                             </div>
                                         </div>
-
-                                        {/* </div>
-                                        <div className="form-group login-textarea-control">
-                                        </div>
-                                        <div className="form-group login-textarea-control">
-                                        </div> */}
-
-                                        {/* <div className="form-group login-textarea-control login-button-padding-control"> */}
                                         <div className="form-group register-submitForm">
                                             <button type="submit" className="btn btn-block">Submit</button>
                                         </div>
@@ -154,20 +142,6 @@ const Register = () => {
                     </div>
                 </div>
             </div>
-
-
-            {/* <br /><br />
-            <section className="heading">
-                <h1><FaUser/>Register</h1>
-                <br />
-                <p className='register-heading-buttom-space-reducer'><u>Please Create an account</u></p>
-            </section> */}
-            {/* <section className="form">
-                <center>
-                    
-                </center>
-            </section> */}
-            {/* <u><Link className='register-link-hover' to="/login">Already A Registered User, Login</Link></u> */}
         </div>
     )
 }
