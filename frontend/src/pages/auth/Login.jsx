@@ -68,10 +68,10 @@ const Login = () => {
                     <div className='row'>
                         <div className="col">
                             <div className='img-login'>
-                                <img src={require(`./images/login.jpg`)} height="150px" alt="ShareConnect"/>
+                                <img src={require(`../../assets/images/auth/login.jpg`)} height="150px" alt="ShareConnect"/>
                             </div>
                             <div className='toRegister'>
-                                <Link className="nav-link active" aria-current="page" to={`/register`}>Create an Account</Link>
+                                <b><Link className="no-decoration" aria-current="page" to={`/register`}>Create an Account</Link></b>
                             </div>
                         </div>
                         <div className="col">
@@ -83,13 +83,13 @@ const Login = () => {
                                     <div className="form-group formPadder">
                                         <div className='inputTaker form-control'>
                                             <FaEnvelope className='faFig'/>
-                                            <input className="borderRemover" type="email" id='email' name='email' value={email} placeholder='Your Email' onChange={onChange}/>
+                                            <input type="email" id='email' name='email' value={email} placeholder='Your Email' onChange={onChange}/>
                                         </div>
                                     </div>
                                     <div className="form-group formPadder">
                                         <div className='inputTaker form-control'>
                                             <FaLock className='faFig'/>
-                                            <input className="borderRemover" type="password" id='password' name='password' value={password} placeholder='Your Password' onChange={onChange}/>
+                                            <input type="password" id='password' name='password' value={password} placeholder='Your Password' onChange={onChange}/>
                                         </div>
                                     </div>
                                     <div className="form-group submitForm">
