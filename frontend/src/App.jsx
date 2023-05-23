@@ -26,7 +26,7 @@ function App() {
                         <Route path='/home' element={<Dashboard/>} />
                         <Route path='/login' element={<Login/>} />
                         <Route path='/register' element={<Register/>} />
-                        <Route path='/contact' element={<About/>} />
+                        {/* <Route path='/contact' element={<About/>} /> */}
 
                         {user?(<Route path={`user/${user.name}`} element={<Profile/>} />):<></>}
                         {user?(<Route path={`user/${user.name}/${user._id}`} element={<AccountDetails/>} />):<></>}
