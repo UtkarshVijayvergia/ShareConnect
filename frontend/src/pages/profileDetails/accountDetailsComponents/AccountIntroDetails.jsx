@@ -30,10 +30,12 @@ const AccountIntroDetails = (props) => {
 
     // Get user profile pic - UseEffect
     useEffect(() => {
-        (async () => {
-            const url = await getImage();
-            setProfilePicUrl(url);
-        })();
+        const fetchImageUrl = async () => {
+          const url = await getImage();
+          setProfilePicUrl(url);
+        };
+      
+        fetchImageUrl();
     }, []);
 
 
@@ -49,7 +51,7 @@ const AccountIntroDetails = (props) => {
         if(newProfilePic){
             reader.readAsDataURL(newProfilePic);
         }
-      };
+    };
 
 
     // Change profile pic
@@ -72,6 +74,8 @@ const AccountIntroDetails = (props) => {
         } 
         else {
             await response.json();
+            const updatedImageUrl = await getImage();
+            setProfilePicUrl(updatedImageUrl);
         }
     };
 
@@ -81,7 +85,6 @@ const AccountIntroDetails = (props) => {
             <div className='head1'>
                 <p className='head-intro'>Introduction</p>
                 <p className='head-p'>Let the ShareConnect community recognize you.</p>
-                
                 <div className='info'>
                     <div className='namer'>
                         <p className='namer-name'>Name </p>
@@ -90,11 +93,9 @@ const AccountIntroDetails = (props) => {
                     <br />
                     <div className='profile-picture'>
                         <p className='namer-profile'>Profile Picture </p>
-
                         <div className='card accountPicContainer'>
                             <img className='accountPic' src={profilePicUrl} alt="Profile Picture" />
                         </div>
-
                         <div>
                             <form encType="multipart/form-data">
                                 <div className='profilePic-upload'>
@@ -109,8 +110,8 @@ const AccountIntroDetails = (props) => {
                                 </div>
                             </form>
                         </div>
-
-                    </div><br />
+                    </div>
+                    <br />
                 </div>
             </div>
         </div>
