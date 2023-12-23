@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify'
 import './profilePic.css'
 
 const ProfilePic = () => {
@@ -16,12 +17,17 @@ const ProfilePic = () => {
                     'Content-Type': 'application/json',
                 },
             });
+            if (!response.ok) {
+                toast.error("Error retrieving profile picture. Please Upload Again");
+            }
             const blob = await response.blob();
             const url = URL.createObjectURL(blob);
             return url;
         }
         catch(error){
             console.log(error);
+            toast.error("An error occurred while fetching the profile picture");
+            return null;
         }
     }
 
