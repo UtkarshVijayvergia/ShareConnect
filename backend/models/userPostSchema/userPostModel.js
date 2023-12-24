@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const userPostSchema = mongoose.Schema({
-    profile_id: {
+    user_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
