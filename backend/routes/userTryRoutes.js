@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { getUserTry, setUserTry, getoneUserTry, updateUserTry } = require('../controller/userTryController')
+const { getUserTry, setUserTry, getoneUserTry, updateUserTry } = require('../controller/testControllers/userTryController')
 const { protect } = require('../middleware/authMiddleware')
 
 // Configure cors
