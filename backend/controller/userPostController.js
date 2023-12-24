@@ -18,7 +18,7 @@ const getAllPost = asyncHandler(async (req,res) => {
 // @route    GET /api/user/posts/:id
 // @access   Private
 const getOnePost = asyncHandler(async (req,res) => {
-    const Onepost = await userPostModel.find({ user: req.params.id }, 'title body').exec();
+    const Onepost = await userPostModel.find({ _id: req.params.id }, 'title body createdAt updatedAt').exec();
     if(!Onepost){
         res.status(400)
         throw new Error('Not authorized')
