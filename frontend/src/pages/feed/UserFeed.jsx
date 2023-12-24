@@ -2,10 +2,9 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import UserFeed from './feed/UserFeed'
 
 
-const Dashboard = () => {
+const UserFeed = () => {
     const navigate = useNavigate();
     const { user } = useSelector((state) => state.auth)
 
@@ -18,9 +17,12 @@ const Dashboard = () => {
 
     return (
         <div>
-            <UserFeed/>
+            <div>
+                Dashboard
+                {/* { user ? (<> <br /><br />{user.name}<br />{user.email}<br /><br /><p>qwerty</p></>) : (<>nothing to display</>) } */}
+            </div>
         </div>
     )
 }
 
-export default Dashboard
+export default UserFeed
