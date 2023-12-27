@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
-import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/feed/Dashboard';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Navbar from './components/Navbar';
@@ -13,6 +13,7 @@ import LandingPage from './pages/landingPage/LandingPage';
 import Error404 from './pages/Error404';
 import AccountDetails from './pages/profileDetails/AccountDetails';
 
+
 function App() {
     const { user } = useSelector((state) => state.auth)
 
@@ -20,7 +21,7 @@ function App() {
         <>
             <Router>
                 <Navbar/>
-                <div className="container-new">
+                {/* <div className="container-new"> */}
                     <Routes>
                         <Route path='/' element={<LandingPage/>}/>
                         <Route path='/home' element={<Dashboard/>} />
@@ -34,7 +35,7 @@ function App() {
                         <Route path='*' exact={true} element={<Error404/>} />
 
                     </Routes>
-                </div>
+                {/* </div> */}
             </Router>
             <ToastContainer />
         </>

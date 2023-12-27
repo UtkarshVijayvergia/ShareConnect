@@ -1,0 +1,8 @@
+.backgraound-color-setter{
+    background-color: #EFEFEF;
+    height: calc(100vh - 66px);
+}
+
+.margin-setter{
+    margin-top: 15px;
+}
