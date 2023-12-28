@@ -23,14 +23,14 @@ const Dashboard = () => {
         <div className="backgraound-color-setter">
             {/* { user ? (<> <br /><br />{user.name}<br />{user.email}<br /><br /><p>qwerty</p></>) : (<>nothing to display</>) } */}
             <div className='container'>
-                <div class="row align-items-start">
-                    <div class="col margin-setter">
+                <div className="row align-items-start">
+                    <div className="col margin-setter">
                         <ProfileCard/>
                     </div>
-                    <div class="col-6 margin-setter">
+                    <div className="col-6 margin-setter">
                         <Feed />
                     </div>
-                    <div class="col margin-setter">
+                    <div className="col margin-setter">
                         <AdsCard />
                     </div>
                 </div>

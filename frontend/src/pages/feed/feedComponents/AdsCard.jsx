@@ -3,8 +3,8 @@ import React from 'react'
 const AdsCard = () => {
   return (
     <div>
-        <div class="card">
-            <div class="card-body">
+        <div className="card">
+            <div className="card-body">
                 Ads Card
             </div>
         </div>
