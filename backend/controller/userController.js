@@ -123,9 +123,25 @@ const getMe = asyncHandler(async (req,res) => {
 
 
 
+
+// @desc     GET user details
+// @route    GET /api/user/:id
+// @access   Private
+const getUserDetails = asyncHandler(async (req,res) => {
+    const userdetails = await User.find({ _id: req.params.id }, 'name email').exec();
+    if(!userdetails){
+        res.status(400)
+        throw new Error('User Not Found')
+    }
+    res.status(200).json(userdetails)
+})
+
+
+
 module.exports = {
     registerUser,
     loginUser,
+    getUserDetails,
     getMe,
 }
 
