@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import ProfileCard from './feedComponents/ProfileCard'
 import Feed from './feedComponents/Feed'
 import AdsCard from './feedComponents/AdsCard'
+import NewPost from './feedComponents/NewPost'
 import './dashboard.css'
 
 
@@ -28,7 +29,10 @@ const Dashboard = () => {
                         <ProfileCard/>
                     </div>
                     <div className="col-6 margin-setter">
+                        <NewPost/>
+                        <hr />
                         <Feed />
+                        <br />
                     </div>
                     <div className="col margin-setter">
                         <AdsCard />

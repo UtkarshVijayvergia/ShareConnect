@@ -8,6 +8,7 @@ const userPostModel = require('../models/userPostSchema/userPostModel');
 // @access   Private
 const getAllPost = asyncHandler(async (req,res) => {
     const allPost = await userPostModel.find();
+    allPost.reverse();
     res.status(200).json(allPost)
 })
 

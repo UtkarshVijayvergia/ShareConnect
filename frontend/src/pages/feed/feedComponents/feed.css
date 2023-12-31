@@ -20,19 +20,20 @@
 }
 
 .user-info {
-    margin-left: 10px;
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
 }
 
 .user-name {
-    margin: 0;
-    font-size: 18px;
+    margin-bottom: -2px;
+    font-size: 20px;
 }
 
 .user-email {
-    margin: 0;
-    font-size: 14px;
+    margin: -1px;
+    font-size: 16px;
+    font-weight: 100;
 }
 
 .post-partition {
