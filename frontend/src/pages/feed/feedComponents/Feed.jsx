@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify'
+import { FaThumbsUp, FaRegThumbsUp } from 'react-icons/fa';
+import { FaComment } from 'react-icons/fa';
 import './feed.css'
 
 
@@ -139,6 +141,17 @@ const Feed = () => {
                                 <div className="post-details">
                                     <div className="post-title">{curr.title}</div>
                                     <div className="post-body">{curr.body}</div>
+                                </div>
+                                <hr className='post-partition'/>
+                                <div className="post-reaction">
+                                    <btn className="btn post-like">
+                                        <i className="far fa-thumbs-up"><FaThumbsUp /></i>
+                                        <div className="like-count">Like</div>
+                                    </btn>
+                                    <div className="btn post-comment">
+                                        <i className="far fa-comment"><FaComment /></i>
+                                        <div className="comment-count">Comment</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

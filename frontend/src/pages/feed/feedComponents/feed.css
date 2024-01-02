@@ -42,9 +42,55 @@
 
 .post-details {
     margin-left: 20px;
-    /* Adjust the margin as needed */
 }
 
 .post-title {
     font-size: 25px;
+}
+
+.post-reaction {
+    display: flex;
+    align-items: center;
+}
+
+.post-like {
+    display: flex;
+    justify-content:center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-right: 0.5px solid rgba(0, 0, 0, 0.274);
+    width: 50%;
+    margin-bottom: -10px;
+    border: none !important;
+    background: none !important;
+    outline: none !important;
+    margin-right: 1.5px;
+}
+
+.post-comment {
+    display: flex;
+    border-left: 0.5px solid rgba(0, 0, 0, 0.274);
+    justify-content:center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 50%;
+    margin-bottom: -10px;
+    border: none !important;
+    background: none !important;
+    outline: none !important;
+    margin-left: 1.5px;
+}
+
+.post-like:hover, .post-comment:hover {
+    background-color: rgba(0, 0, 0, 0.137) !important;
+    outline: none !important;
+    margin-left: 1.5px;
+}
+
+.like-count {
+    margin-left: 8px;
+}
+
+.comment-count {
+    margin-left: 8px;
 }
