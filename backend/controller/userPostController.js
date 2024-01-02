@@ -76,30 +76,27 @@ const setPost = asyncHandler(async (req,res) => {
 // @route    DELETE /api/user/posts/:userID/:postID
 // @access   Private
 const deletePost = asyncHandler(async (req,res) => {
-    // check if user exists + check if correct user have access
-    if(!req.user || req.user._id!=req.params.userID){
-        res.status(401).json({ message: 'Unauthorized' });
-        return;
+    // check if correct user have access
+    if(req.user._id.toString()!=req.params.userID){
+        return res.status(401).json({ message: 'Unauthorized' });
     }
     // check if postID exists
     try{
         const post = await userPostModel.findById( req.params.postID );
         if(!post){
-            res.status(404).json({ message: 'Resource not found' });
-            return;
+            return res.status(404).json({ message: 'Resource not found' });
         }
-        const postID = post._id;
         await post.remove();
         res.status(200).json({ message: 'Post deleted successfully' });
     }
     catch(error){
         // Handle the specific CastError thrown by findById
         if (error.name === 'CastError' && error.kind === 'ObjectId') {
-            res.status(404).json({ message: 'Resource not found' });
+            return res.status(404).json({ message: 'Resource not found' });
         } 
         // Handle other errors
         else {
-            res.status(500).json({ message: 'Internal Server Error' });
+            return res.status(500).json({ message: 'Internal Server Error' });
         }
     }
 })
