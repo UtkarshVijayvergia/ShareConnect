@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler')
-const userPostModel = require('../models/userPostSchema/userPostModel');
+const userPostModel = require('../models/userPostModel');
 
 
 
@@ -50,16 +50,16 @@ const getOneUserPost = asyncHandler(async (req,res) => {
 // @route    POST /api/user/posts
 // @access   Private
 const setPost = asyncHandler(async (req,res) => {
+    // check if user exists
+    if(!req.user){
+        res.status(401)
+        return res.status(401).json({ message: 'Unauthorized' });
+    }
     const {title, body} = req.body;
     // Field Validations
     if(!title && !body){
         res.status(400)
-        throw new Error('Post can not be empty')
-    }
-    // check if user exists
-    if(!req.user){
-        res.status(401)
-        throw new Error('Unauthorized')
+        return res.status(400).json({ message: 'Post can not be empty' });
     }
     // Create a new POST
     const post = await userPostModel.create({
@@ -76,31 +76,26 @@ const setPost = asyncHandler(async (req,res) => {
 // @route    DELETE /api/user/posts/:userID/:postID
 // @access   Private
 const deletePost = asyncHandler(async (req,res) => {
-    // check if user exists
-    if(!req.user){
-        res.status(401)
-        throw new Error('Unauthorized')
-    }
-    // check if correct user have access
-    if(req.user._id!=req.params.userID){
-        res.status(401)
-        throw new Error('Unauthorized')
+    // check if user exists + check if correct user have access
+    if(!req.user || req.user._id!=req.params.userID){
+        res.status(401).json({ message: 'Unauthorized' });
+        return;
     }
     // check if postID exists
     try{
         const post = await userPostModel.findById( req.params.postID );
         if(!post){
-            res.status(404).json({ message: 'Post not found' });
+            res.status(404).json({ message: 'Resource not found' });
             return;
         }
-        console.log(post);
+        const postID = post._id;
         await post.remove();
-        res.status(200).json({ id: req.params.id });
+        res.status(200).json({ message: 'Post deleted successfully' });
     }
     catch(error){
         // Handle the specific CastError thrown by findById
         if (error.name === 'CastError' && error.kind === 'ObjectId') {
-            res.status(400).json({ message: 'Post not found' });
+            res.status(404).json({ message: 'Resource not found' });
         } 
         // Handle other errors
         else {
