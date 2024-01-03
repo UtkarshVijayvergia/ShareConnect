@@ -66,6 +66,9 @@ const setPost = asyncHandler(async (req,res) => {
         user_id: req.user._id,
         title: title,
         body: body,
+        media: [],
+        likes: [],
+        comments: [],
     })
     res.status(200).json(post)
 })
@@ -103,10 +106,65 @@ const deletePost = asyncHandler(async (req,res) => {
 
 
 
+// @desc     POST like a post
+// @route    POST /api/user/posts/:postID/like
+// @access   Private
+const likePost = asyncHandler(async (req, res) => {
+    const post = await userPostModel.findById(req.params.postID);
+    // Check if post exists
+    if (!post) {
+        return res.status(404).json({ message: 'Post not found' });
+    }
+    // Check if user already liked the post
+    const alreadyLiked = post.likes.find(like => like.user_id.toString() === req.user._id.toString());
+    if (alreadyLiked) {
+        // Remove the like
+        post.likes = post.likes.filter(like => like.user_id.toString() !== req.user._id.toString());
+        await post.save();
+        console.log("Post unliked");
+        return res.status(200).json(post);
+    }
+    // Like the post
+    post.likes.push({ user_id: req.user._id });
+    await post.save();
+    console.log("Post liked");
+    res.status(200).json(post);
+});
+
+
+// @desc     POST a comment
+// @route    POST /api/user/posts/:postID/comment
+// @access   Private
+const commentPost = asyncHandler(async (req, res) => {
+    const post = await userPostModel.findById(req.params.postID);
+    // Check if post exists
+    if (!post) {
+        return res.status(404).json({ message: 'Post not found' });
+    }
+    // Check if comment is empty
+    const comment_text = req.body.comment_text;
+    if(!comment_text){
+        return res.status(400).json({ message: 'Comment can not be empty' });
+    }
+    // Add the Comment in the post
+    const comment = {
+        _id: new mongoose.Types.ObjectId(),
+        user_id: req.user._id,
+        text: text
+    };
+    post.comments.push(comment);
+    await post.save();
+    res.status(200).json(post);
+});
+
+
+
 module.exports = {
     getAllPost,
     getAllUserPost,
     getOneUserPost,
     setPost,
     deletePost,
+    likePost,
+    commentPost,
 }
