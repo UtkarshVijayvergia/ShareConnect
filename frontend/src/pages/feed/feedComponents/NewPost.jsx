@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import './newPost.css'
 
 
-const NewPost = () => {
+const NewPost = ({ setPosts }) => {
     const { user } = useSelector((state) => state.auth)
     const navigate = useNavigate([]);
 
@@ -68,7 +68,7 @@ const NewPost = () => {
     const submit = async (e) => {
         e.preventDefault();
         handleClick()
-        await fetch(`http://localhost:5000/api/user/posts`, {
+        const response = await fetch(`http://localhost:5000/api/user/posts`, {
             method: "POST",
             headers:{
                 Authorization:  `Bearer ${user.token}`,
@@ -76,6 +76,8 @@ const NewPost = () => {
             },
             body: JSON.stringify({ title, body })
         })
+        const post = await response.json();
+        setPosts(prevPosts => [post, ...prevPosts]);
     }
 
 

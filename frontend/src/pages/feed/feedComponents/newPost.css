@@ -26,17 +26,19 @@
     margin-top: 5px;
     margin-left: 15px;
     padding-left: 20px;
-    width: 515px;
+    width: 100%; /* Changed from fixed pixel value to percentage */
+    box-sizing: border-box; /* Include padding and border in element's total width */
     font-size: 22.5px;
 }
 
 .new-body-area {
     margin-top: 10px;
     margin-left: 8px;
-    min-width: 577px;
-    min-height: 150px;
+    width: 99%; /* Changed from min-width to width and from fixed pixel value to percentage */
+    height: 100px;
     padding-left: 10px;
     border-radius: 2px;
+    box-sizing: border-box; /* Include padding and border in element's total width */
 }
 
 .post-btn{
@@ -46,18 +48,33 @@
 
 .post-btn-editor {
     border-radius: 5px !important;
-    width: 577px;
+    width: 100%; /* Changed from fixed pixel value to percentage */
     height: 45px;
     font-weight: 600;
     color: rgb(255, 255, 255);
     background-color: rgb(42, 115, 204);
     outline: none !important; /* Add this line to remove the blue outline */
     font-size: 18px;
+    box-sizing: border-box; /* Include padding and border in element's total width */
 }
+
 .post-btn-editor:active {
     border-style: outset;
 }
 
 .post-btn-editor:focus {
     background-color: rgb(0, 0, 0);
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .new-title-area {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .new-title-area {
+        font-size: 16px;
+    }
 }

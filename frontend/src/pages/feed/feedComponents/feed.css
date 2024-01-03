@@ -58,7 +58,6 @@
     justify-content:center;
     padding-top: 10px;
     padding-bottom: 10px;
-    border-right: 0.5px solid rgba(0, 0, 0, 0.274);
     width: 50%;
     margin-bottom: -10px;
     border: none !important;
@@ -67,9 +66,17 @@
     margin-right: 1.5px;
 }
 
+.like-counter{
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+.fa{
+    vertical-align:top !important;
+}
+
 .post-comment {
     display: flex;
-    border-left: 0.5px solid rgba(0, 0, 0, 0.274);
     justify-content:center;
     padding-top: 10px;
     padding-bottom: 10px;

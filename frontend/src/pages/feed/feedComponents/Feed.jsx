@@ -4,34 +4,15 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify'
 import { FaThumbsUp, FaRegThumbsUp } from 'react-icons/fa';
-import { FaComment } from 'react-icons/fa';
+import { FaRegComment } from 'react-icons/fa';
 import './feed.css'
 
 
-const Feed = () => {
+const Feed = ({posts, setPosts}) => {
     const { user } = useSelector((state) => state.auth)
-    const [feed, setFeed] = useState([]);
     const [profilePicUrl, setProfilePicUrl] = useState([]);
     const [userDetails, setUserDetails] = useState([]);
     const navigate = useNavigate([]);
-
-
-    const getFeed = async () => {
-        try {
-            const response = await fetch('http://localhost:5000/api/user/posts', {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${user.token}`,
-                    'Content-Type': 'application/json',
-                },
-            });
-            // console.log(response);
-            setFeed(await response.json());
-        }
-        catch (error) {
-            console.log(error);
-        }
-    }
 
 
     const getuserDetails = async (id) => {
@@ -75,7 +56,6 @@ const Feed = () => {
     
     const postReact = async (id) => {
         try {
-            // Send a POST request to the like API
             const response = await fetch(`/api/user/posts/${id}/like`, {
                 method: 'POST',
                 headers: {
@@ -83,14 +63,12 @@ const Feed = () => {
                     'Content-Type': 'application/json',
                 },
             });
-            // If the response is not ok, throw an error
             if (!response.ok) {
                 throw new Error('Response is not ok');
             }
-            // Get the updated post from the response
             const updatedFeed = await response.json();
             // Update the feed in your state
-            setFeed(prevFeed => {
+            setPosts(prevFeed => {
                 return prevFeed.map(post => post._id === id ? updatedFeed : post);
             });
         } 
@@ -101,20 +79,18 @@ const Feed = () => {
 
 
     useEffect(() => {
-        // if user not authenticated then not allowed to visit this page (Protected route)
+        // If user not authenticated then not allowed to visit this page (Protected route)
         if (!user) {
             navigate('/login')
         }
-        // get user details
-        getFeed()
     }, [user, navigate])
 
 
     useEffect(() => {
         const fetchUserDetails = async () => {
-            if (feed) {
+            if (posts) {
                 // Map each userDetails item to a promise that resolves to the userDetails ID
-                const userDetailsPromises = feed.map(async (curr) => {
+                const userDetailsPromises = posts.map(async (curr) => {
                     const detail = await getuserDetails(curr.user_id);
                     return detail;
                 });
@@ -125,14 +101,14 @@ const Feed = () => {
             }
         };
         fetchUserDetails();
-    }, [feed]);
+    }, [posts]);
 
 
     useEffect(() => {
         const fetchImageUrl = async () => {
-            if (feed) {
+            if (posts) {
                 // Map each feed item to a promise that resolves to the profile pic URL
-                const profilePicPromises = feed.map(async (curr) => {
+                const profilePicPromises = posts.map(async (curr) => {
                     const url = await getProfilePic(curr.user_id);
                     return url;
                 });
@@ -143,12 +119,12 @@ const Feed = () => {
             }
         };
         fetchImageUrl();
-    }, [feed]);
+    }, [posts]);
 
 
     return (
         <div>
-            {feed?.map((curr, index) => (
+            {posts?.map((curr, index) => (
                 <div key={index} className="card-body-style">
                     <div className="card">
                         <div className="card-body">
@@ -172,16 +148,19 @@ const Feed = () => {
                                 <hr className='post-partition'/>
                                 <div className="post-reaction">
                                     <div className="btn post-like"  onClick={() => postReact(curr._id)}>
+                                        <div className="like-counter">
+                                            ({curr?.likes?.length})
+                                        </div>
                                         {
                                             curr?.likes?.some(like => like.user_id === user._id) ?
-                                                <><i className="far fa-thumbs-up"><FaThumbsUp /></i></>
+                                                <i className="far fa-thumbs-up"><FaThumbsUp /></i>
                                                 :
-                                                <><i className="far fa-thumbs-up"><FaRegThumbsUp /></i></>
+                                                <i className="far fa-thumbs-up"><FaRegThumbsUp /></i>
                                         }
                                         <div className="like-count">Like</div>
                                     </div>
                                     <div className="btn post-comment">
-                                        <i className="far fa-comment"><FaComment /></i>
+                                        <i className="far fa-comment"><FaRegComment /></i>
                                         <div className="comment-count">Comment</div>
                                     </div>
                                 </div>
@@ -192,8 +171,6 @@ const Feed = () => {
             ))}
         </div>
     );
-
-
 }
 
 export default Feed
