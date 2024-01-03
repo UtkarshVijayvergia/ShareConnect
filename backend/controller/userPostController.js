@@ -121,13 +121,11 @@ const likePost = asyncHandler(async (req, res) => {
         // Remove the like
         post.likes = post.likes.filter(like => like.user_id.toString() !== req.user._id.toString());
         await post.save();
-        console.log("Post unliked");
         return res.status(200).json(post);
     }
     // Like the post
     post.likes.push({ user_id: req.user._id });
     await post.save();
-    console.log("Post liked");
     res.status(200).json(post);
 });
 
