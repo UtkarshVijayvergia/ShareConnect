@@ -10,7 +10,7 @@ import './feed.css'
 
 const Feed = () => {
     const { user } = useSelector((state) => state.auth)
-    const [feed, setFeed] = useState([]);
+    const [posts, setPosts] = useState([]);
     const [profilePicUrl, setProfilePicUrl] = useState([]);
     const [userDetails, setUserDetails] = useState([]);
     const navigate = useNavigate([]);
@@ -26,7 +26,7 @@ const Feed = () => {
                 },
             });
             // console.log(response);
-            setFeed(await response.json());
+            setPosts(await response.json());
         }
         catch (error) {
             console.log(error);
@@ -72,6 +72,32 @@ const Feed = () => {
         }
     }
 
+    const postReact = async (id) => {
+        try {
+            // Send a POST request to the like API
+            const response = await fetch(`/api/user/posts/${id}/like`, {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${user.token}`,
+                    'Content-Type': 'application/json',
+                },
+            });
+            // If the response is not ok, throw an error
+            if (!response.ok) {
+                throw new Error('Response is not ok');
+            }
+            // Get the updated post from the response
+            const updatedFeed = await response.json();
+            // Update the feed in your state
+            setPosts(prevFeed => {
+                return prevFeed.map(post => post._id === id ? updatedFeed : post);
+            });
+        } 
+        catch (error) {
+            console.error('Failed to react to post:', error);
+        }
+    };
+
 
     useEffect(() => {
         // if user not authenticated then not allowed to visit this page (Protected route)
@@ -85,9 +111,9 @@ const Feed = () => {
 
     useEffect(() => {
         const fetchUserDetails = async () => {
-            if (feed) {
+            if (posts) {
                 // Map each userDetails item to a promise that resolves to the userDetails ID
-                const userDetailsPromises = feed.map(async (curr) => {
+                const userDetailsPromises = posts.map(async (curr) => {
                     const detail = await getuserDetails(curr.user_id);
                     return detail;
                 });
@@ -98,14 +124,14 @@ const Feed = () => {
             }
         };
         fetchUserDetails();
-    }, [feed]);
+    }, [posts]);
 
 
     useEffect(() => {
         const fetchImageUrl = async () => {
-            if (feed) {
+            if (posts) {
                 // Map each feed item to a promise that resolves to the profile pic URL
-                const profilePicPromises = feed.map(async (curr) => {
+                const profilePicPromises = posts.map(async (curr) => {
                     const url = await getProfilePic(curr.user_id);
                     return url;
                 });
@@ -116,12 +142,12 @@ const Feed = () => {
             }
         };
         fetchImageUrl();
-    }, [feed]);
+    }, [posts]);
 
 
     return (
         <div>
-            {feed?.map((curr, index) => (
+            {posts?.map((curr, index) => (
                 <div key={index} className="card-body-style">
                     <div className="card">
                         <div className="card-body">
@@ -144,10 +170,15 @@ const Feed = () => {
                                 </div>
                                 <hr className='post-partition'/>
                                 <div className="post-reaction">
-                                    <btn className="btn post-like">
-                                        <i className="far fa-thumbs-up"><FaThumbsUp /></i>
+                                    <div className="btn post-like"  onClick={() => postReact(curr._id)}>
+                                        {
+                                            curr?.likes?.some(like => like.user_id === user._id) ?
+                                                <><i className="far fa-thumbs-up"><FaThumbsUp /></i></>
+                                                :
+                                                <><i className="far fa-thumbs-up"><FaRegThumbsUp /></i></>
+                                        }
                                         <div className="like-count">Like</div>
-                                    </btn>
+                                    </div>
                                     <div className="btn post-comment">
                                         <i className="far fa-comment"><FaComment /></i>
                                         <div className="comment-count">Comment</div>
