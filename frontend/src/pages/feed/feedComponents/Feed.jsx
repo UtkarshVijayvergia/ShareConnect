@@ -6,13 +6,15 @@ import { toast } from 'react-toastify'
 import { FaThumbsUp, FaRegThumbsUp } from 'react-icons/fa';
 import { FaRegComment } from 'react-icons/fa';
 import './feed.css'
+import CommentOnPost from './CommentOnPost';
 
 
-const Feed = ({posts, setPosts}) => {
+const Feed = ({posts, setPosts, userProfilePic}) => {
     const { user } = useSelector((state) => state.auth)
     const [profilePicUrl, setProfilePicUrl] = useState([]);
     const [userDetails, setUserDetails] = useState([]);
     const navigate = useNavigate([]);
+    const [showComments, setShowComments] = useState([]);
 
 
     const getuserDetails = async (id) => {
@@ -76,6 +78,18 @@ const Feed = ({posts, setPosts}) => {
             console.error('Failed to react to post:', error);
         }
     };
+
+
+    const handleCommentclick = (post_id) => {
+        // push the post_id to the showComments array
+        if (!showComments?.includes(post_id)) {
+            setShowComments(prevShowComments => [...prevShowComments, post_id]);
+        }
+        else {
+            // remove the post_id from the showComments array
+            setShowComments(prevShowComments => prevShowComments.filter(id => id !== post_id));
+        }
+    }
 
 
     useEffect(() => {
@@ -159,11 +173,21 @@ const Feed = ({posts, setPosts}) => {
                                         }
                                         <div className="like-count">Like</div>
                                     </div>
-                                    <div className="btn post-comment">
+                                    <div className="btn post-comment"  onClick={() => handleCommentclick(curr._id)}>
+                                        <div className="comment-counter">
+                                            ({curr?.comments?.length})
+                                        </div>
                                         <i className="far fa-comment"><FaRegComment /></i>
                                         <div className="comment-count">Comment</div>
                                     </div>
                                 </div>
+                                    {   
+                                        showComments && showComments.includes(curr._id) 
+                                        ? 
+                                        <CommentOnPost postID={curr._id} posts={posts} setPosts={setPosts} userProfilePic={userProfilePic} postComments={curr.comments}/> 
+                                        : 
+                                        null
+                                    }
                             </div>
                         </div>
                     </div>

@@ -146,11 +146,11 @@ const commentPost = asyncHandler(async (req, res) => {
     }
     // Add the Comment in the post
     const comment = {
-        _id: new mongoose.Types.ObjectId(),
+        // _id: new mongoose.Types.ObjectId(),
         user_id: req.user._id,
-        text: text
+        comment_text: comment_text
     };
-    post.comments.push(comment);
+    post.comments.unshift(comment);
     await post.save();
     res.status(200).json(post);
 });

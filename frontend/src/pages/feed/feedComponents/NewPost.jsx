@@ -5,12 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import './newPost.css'
 
 
-const NewPost = ({ setPosts }) => {
+const NewPost = ({ setPosts, userProfilePic }) => {
     const { user } = useSelector((state) => state.auth)
     const navigate = useNavigate([]);
 
-
-    const [profilePicUrl, setProfilePicUrl] = useState([]);
     const [newPost, setNewPost] = useState([{
         title: "",
         body: "",
@@ -20,25 +18,6 @@ const NewPost = ({ setPosts }) => {
 
 
     const { title, body } = newPost[0]!=null ? newPost[0] : {};
-
-
-    const getProfilePic = async () => {
-        try {
-            const response = await fetch(`http://localhost:5000/api/user/profilepic/${user._id}`, {
-                headers: {
-                    Authorization: `Bearer ${user.token}`,
-                    'Content-Type': 'application/json',
-                },
-            });
-            const blob = await response.blob();
-            const url = URL.createObjectURL(blob);
-            return url;
-        }
-        catch (error) {
-            console.log(error);
-        }
-    }
-
 
     const onChange = (e) => {
         const name = e.target.name;
@@ -78,6 +57,11 @@ const NewPost = ({ setPosts }) => {
         })
         const post = await response.json();
         setPosts(prevPosts => [post, ...prevPosts]);
+        // Clear the input fields
+        setNewPost([{ 
+            title: "", 
+            body: "",
+        }]);
     }
 
 
@@ -89,17 +73,6 @@ const NewPost = ({ setPosts }) => {
     }, [user, navigate])
 
 
-    // Get user profile pic - UseEffect
-    useEffect(() => {
-        const fetchImageUrl = async () => {
-          const url = await getProfilePic();
-          setProfilePicUrl(url);
-        };
-      
-        fetchImageUrl();
-    }, []);
-
-
     return (
         <div>
             <div className="card">
@@ -109,7 +82,7 @@ const NewPost = ({ setPosts }) => {
                     </div>
                     <div className="new-post-direction">
                         <div className="new-post-profile-pic">
-                            <img className='post-profile-pic' src={profilePicUrl} alt="Profile Picture" />
+                            <img className='post-profile-pic' src={userProfilePic} alt="Profile Picture" />
                         </div>
                         <input className='new-title-area' rows="6" aria-invalid="false" aria-describedby="" name="title" value={title} placeholder="Post Title" aria-label="Post Title" onChange={onChange}></input>
                     </div>
