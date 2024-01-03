@@ -10,7 +10,7 @@ import './feed.css'
 
 const Feed = () => {
     const { user } = useSelector((state) => state.auth)
-    const [posts, setPosts] = useState([]);
+    const [feed, setFeed] = useState([]);
     const [profilePicUrl, setProfilePicUrl] = useState([]);
     const [userDetails, setUserDetails] = useState([]);
     const navigate = useNavigate([]);
@@ -26,7 +26,7 @@ const Feed = () => {
                 },
             });
             // console.log(response);
-            setPosts(await response.json());
+            setFeed(await response.json());
         }
         catch (error) {
             console.log(error);
@@ -72,6 +72,7 @@ const Feed = () => {
         }
     }
 
+    
     const postReact = async (id) => {
         try {
             // Send a POST request to the like API
@@ -89,7 +90,7 @@ const Feed = () => {
             // Get the updated post from the response
             const updatedFeed = await response.json();
             // Update the feed in your state
-            setPosts(prevFeed => {
+            setFeed(prevFeed => {
                 return prevFeed.map(post => post._id === id ? updatedFeed : post);
             });
         } 
@@ -111,9 +112,9 @@ const Feed = () => {
 
     useEffect(() => {
         const fetchUserDetails = async () => {
-            if (posts) {
+            if (feed) {
                 // Map each userDetails item to a promise that resolves to the userDetails ID
-                const userDetailsPromises = posts.map(async (curr) => {
+                const userDetailsPromises = feed.map(async (curr) => {
                     const detail = await getuserDetails(curr.user_id);
                     return detail;
                 });
@@ -124,14 +125,14 @@ const Feed = () => {
             }
         };
         fetchUserDetails();
-    }, [posts]);
+    }, [feed]);
 
 
     useEffect(() => {
         const fetchImageUrl = async () => {
-            if (posts) {
+            if (feed) {
                 // Map each feed item to a promise that resolves to the profile pic URL
-                const profilePicPromises = posts.map(async (curr) => {
+                const profilePicPromises = feed.map(async (curr) => {
                     const url = await getProfilePic(curr.user_id);
                     return url;
                 });
@@ -142,12 +143,12 @@ const Feed = () => {
             }
         };
         fetchImageUrl();
-    }, [posts]);
+    }, [feed]);
 
 
     return (
         <div>
-            {posts?.map((curr, index) => (
+            {feed?.map((curr, index) => (
                 <div key={index} className="card-body-style">
                     <div className="card">
                         <div className="card-body">
