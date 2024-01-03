@@ -4,7 +4,7 @@ const userPostSchema = mongoose.Schema({
     user_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true
+        required: true,
     },
     title: {
         type: String,
@@ -45,9 +45,9 @@ const userPostSchema = mongoose.Schema({
             ref: 'User',
             required: true,
         },
-        text: {
+        comment_text: {
             type: String,
-            required: true 
+            required: true,
         },
         created_at: {
             type: Date,
@@ -57,7 +57,7 @@ const userPostSchema = mongoose.Schema({
     }],
 },
 {
-    timestamps: true
+    timestamps: true,
 });
 
 
