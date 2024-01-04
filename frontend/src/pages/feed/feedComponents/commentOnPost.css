@@ -23,7 +23,6 @@
 .post-comment-input {
     margin-top: 5px;
     margin-left: 8px;
-    /* height: 30px !important; */
     width: 99%; 
     border-radius: 20px;
     height: auto;
@@ -79,13 +78,13 @@
 }
 
 .post-other-comment-name {
-    margin: 10px 0 0 5px;
+    margin: 22.5px 0 0 5px;
     font-size: 12px;
     font-weight: bold;
 }
 
 .post-other-comment-time {
-    margin: 10px 0 0 5px;
+    margin: 22.5px 0 0 5px;
     font-size: 12px;
     color: rgb(197, 197, 197);
 }
