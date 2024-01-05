@@ -77,8 +77,8 @@ const Dashboard = () => {
         <div className="backgraound-color-setter">
             <div className='container'>
                 <div className="row align-items-start">
-                    <div className="col margin-setter">
-                        <ProfileCard/>
+                    <div className="col sticky-div">
+                        <ProfileCard userProfilePic={profilePicUrl}/>
                     </div>
                     <div className="col-6 margin-setter">
                         <NewPost setPosts={setPosts} userProfilePic={profilePicUrl}/>
