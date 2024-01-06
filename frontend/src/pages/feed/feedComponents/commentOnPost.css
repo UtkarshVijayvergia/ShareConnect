@@ -95,4 +95,5 @@
     font-size: 15px;
     font-weight: 400;
     border-left: 2px solid rgb(197, 197, 197);
+    white-space: pre-wrap;
 }

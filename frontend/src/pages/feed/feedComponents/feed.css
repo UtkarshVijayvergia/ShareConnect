@@ -48,6 +48,10 @@
     font-size: 25px;
 }
 
+.post-body {
+    white-space: pre-wrap
+}
+
 .post-reaction {
     display: flex;
     align-items: center;
