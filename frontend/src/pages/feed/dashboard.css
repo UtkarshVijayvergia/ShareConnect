@@ -1,0 +1,12 @@
+.backgraound-color-setter{
+    background-color: #EFEFEF;
+}
+
+.margin-setter{
+    margin-top: 15px;
+}
+
+.sticky-div{
+    position: sticky;
+    top: 0;
+}

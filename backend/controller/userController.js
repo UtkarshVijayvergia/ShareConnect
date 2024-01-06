@@ -4,7 +4,8 @@ const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
 const UserDetails = require('../models/userDetailsModel')
 const UserProfilePic = require('../models/userProfilePicModel')
-
+const fs = require('fs');
+const path = require('path');
 
 
 
@@ -59,33 +60,17 @@ const registerUser = asyncHandler(async (req,res) => {
             phone: "",
         })
 
+        // initialize a default profile pic
+        const imagePath = path.join(__dirname, '..', '..', 'defaults', 'default.jpg');
+        const imageData = fs.readFileSync(imagePath);
         // initialize a default record in userProfilePic collection
         const userProfilePic = await UserProfilePic.create({
             user: user._id,
             image: {
-              data: Buffer.from([
-                68,
-                101,
-                97,
-                116,
-                104,
-                32,
-                110,
-                111,
-                116,
-                101,
-                32,
-                45,
-                32,
-                76,
-                46,
-                106,
-                112,
-                103
-              ]),
-              contentType: "image/png"
+                data: imageData,
+                contentType: "image/jpeg"
             },
-            name: "Death note - L.jpg",
+            name: "default.jpg",
         });
 
         res.status(201).json({
@@ -138,9 +123,25 @@ const getMe = asyncHandler(async (req,res) => {
 
 
 
+
+// @desc     GET user details
+// @route    GET /api/user/:id
+// @access   Private
+const getUserDetails = asyncHandler(async (req,res) => {
+    const userdetails = await User.find({ _id: req.params.id }, 'name email').exec();
+    if(!userdetails){
+        res.status(400)
+        throw new Error('User Not Found')
+    }
+    res.status(200).json(userdetails)
+})
+
+
+
 module.exports = {
     registerUser,
     loginUser,
+    getUserDetails,
     getMe,
 }
 

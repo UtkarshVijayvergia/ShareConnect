@@ -1,0 +1,107 @@
+.card-body-style {
+    margin-top: 25px;
+}
+
+.user-details {
+    display: flex;
+    align-items: center;
+    /* Align items along the vertical center */
+}
+
+.user-profile-pic {
+    margin: 7px 0 0 5px;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    margin-bottom: -2px;
+    font-size: 20px;
+}
+
+.user-email {
+    margin: -1px;
+    font-size: 16px;
+    font-weight: 100;
+}
+
+.post-partition {
+    margin-bottom: 5px;
+}
+
+.post-details {
+    margin-left: 20px;
+}
+
+.post-title {
+    font-size: 25px;
+}
+
+.post-body {
+    white-space: pre-wrap
+}
+
+.post-reaction {
+    display: flex;
+    align-items: center;
+}
+
+.post-like {
+    display: flex;
+    justify-content:center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 50%;
+    margin-bottom: -10px;
+    border: none !important;
+    background: none !important;
+    outline: none !important;
+    margin-right: 1.5px;
+}
+
+.like-counter, .comment-counter {
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+.fa{
+    vertical-align:top !important;
+}
+
+.post-comment {
+    display: flex;
+    justify-content:center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 50%;
+    margin-bottom: -10px;
+    border: none !important;
+    background: none !important;
+    outline: none !important;
+    margin-left: 1.5px;
+}
+
+.post-like:hover, .post-comment:hover {
+    background-color: rgba(0, 0, 0, 0.137) !important;
+    outline: none !important;
+    margin-left: 1.5px;
+}
+
+.like-count {
+    margin-left: 8px;
+}
+
+.comment-count {
+    margin-left: 8px;
+}

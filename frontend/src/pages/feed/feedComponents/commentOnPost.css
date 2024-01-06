@@ -1,0 +1,99 @@
+.post-comment-section {
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.new-post-comment-profile-pic {
+    margin: 7px 0 0 5px;
+}
+
+.post-comment-profile-pic {
+    margin-top: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.add-post-comment {
+    margin-top: 10px;
+    display: flex;
+}
+
+.post-comment-input {
+    margin-top: 5px;
+    margin-left: 8px;
+    width: 99%; 
+    border-radius: 20px;
+    height: auto;
+    border-color: rgb(197, 197, 197) !important;
+    box-sizing: border-box;
+    border-width: 2px;
+    overflow: hidden;
+    resize: none;
+    white-space: pre-wrap;
+    padding-left: 15px;
+}
+
+.add-comment-btn-pos{
+    margin-left: 45px;
+    margin-top: 10px;
+}
+
+.add-comment-btn{
+    border-radius: 5px !important;
+    width: 50px;
+    height: 25px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(42, 115, 204);
+    outline: none !important;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-comment-btn:hover{
+    background-color: rgb(42, 115, 204);
+    opacity: 0.8;
+}
+
+.add-comment-btn:active{
+    background-color: rgb(42, 115, 204);
+    opacity: 0.8;
+}
+
+.post-other-comment {
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.post-other-comment-head {
+    display: flex;
+}
+
+.post-other-comment-profile-pic {
+    margin: 7px 0 0 5px;
+}
+
+.post-other-comment-name {
+    margin: 22.5px 0 0 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.post-other-comment-time {
+    margin: 22.5px 0 0 5px;
+    font-size: 12px;
+    color: rgb(197, 197, 197);
+}
+
+.post-other-comment-content {
+    margin: 0 0 0 20px;
+    padding: 0 0 0 20px;
+    font-size: 15px;
+    font-weight: 400;
+    border-left: 2px solid rgb(197, 197, 197);
+    white-space: pre-wrap;
+}

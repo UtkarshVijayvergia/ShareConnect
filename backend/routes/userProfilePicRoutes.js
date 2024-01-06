@@ -9,6 +9,6 @@ const cors = require('cors');
 router.use(cors());
 
 
-router.route('/:id').get(protect, getProfilePic).post(protect, upload, setProfilePic);
+router.route('/:id').get(getProfilePic).post(protect, upload, setProfilePic);
 
 module.exports = router;

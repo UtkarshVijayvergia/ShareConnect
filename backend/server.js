@@ -15,6 +15,7 @@ app.use('/api/users', require('./routes/userRoutes'))
 app.use('/api/usertry', require('./routes/userTryRoutes'))
 app.use('/api/user/details', require('./routes/userDetailsRoutes'))
 app.use('/api/user/profilepic', require('./routes/userProfilePicRoutes'))
+app.use('/api/user/posts', require('./routes/userPostRoutes'))
 
 app.use(errorHandler)
 

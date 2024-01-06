@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler")
-const UserTry = require("../models/UserTryModel")
+const UserTry = require("../../models/UserTryModel")
 const multer = require('multer')
 
 
